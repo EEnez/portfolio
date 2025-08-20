@@ -133,13 +133,13 @@ export default function Skills() {
             ))}
           </motion.div>
 
-          {/* Learning Skills Section */}
+          
           <motion.div
             variants={cardVariants}
             className="mt-16"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Mon Processus Design-to-Code */}
+              
               <div className="bg-background-card rounded-xl p-8 shadow-card border border-border-subtle">
                 <h3 className="text-xl font-semibold mb-4 text-interactive-primary">
                   Mon Processus Design-to-Code
@@ -179,7 +179,7 @@ export default function Skills() {
                 </div>
               </div>
 
-              {/* En apprentissage continu */}
+              
               <div className="bg-background-card rounded-xl p-8 shadow-card border border-border-subtle">
                 <h3 className="text-xl font-semibold mb-4 text-interactive-primary">
                   En apprentissage continu

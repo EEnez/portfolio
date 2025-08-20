@@ -18,7 +18,7 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   
-  // Détecter le défilement
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -28,7 +28,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Gérer l'état actif des liens de navigation
+
   useEffect(() => {
     const handleSectionVisibility = () => {
       const sections = ['home', 'about', 'projects', 'skills', 'contact'];
@@ -60,7 +60,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -74,7 +74,6 @@ export default function Header() {
             </Link>
           </motion.div>
           
-          {/* Navigation pour desktop */}
           <motion.nav
             className="hidden md:block"
             initial={{ opacity: 0, y: -10 }}
@@ -82,7 +81,7 @@ export default function Header() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <ul className="flex space-x-2">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <li key={item.name}>
                   <Link 
                     href={item.href}
@@ -108,7 +107,6 @@ export default function Header() {
             </ul>
           </motion.nav>
           
-          {/* Bouton du menu mobile */}
           <motion.button
             className="md:hidden text-interactive-primary hover:text-interactive-hover transition-colors duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -126,7 +124,7 @@ export default function Header() {
         </div>
       </div>
       
-      {/* Menu mobile */}
+
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

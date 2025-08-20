@@ -32,19 +32,19 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitError('');
     
-    // Simuler l'envoi du formulaire
+  
     try {
-      // Ici, vous implémenteriez l'envoi réel du formulaire à votre backend
+    
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       
-      // Réinitialiser le message de succès après 5 secondes
+    
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 5000);
-    } catch (error) {
+    } catch {
       setSubmitError('Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setIsSubmitting(false);
@@ -95,11 +95,11 @@ export default function Contact() {
         </h2>
         
         <p className="text-lg text-center max-w-3xl mx-auto mb-12">
-          Vous avez un projet en tête ou une question ? N'hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.
+          Vous avez un projet en tête ou une question ? N&apos;hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Informations de contact */}
+          
           <motion.div
             ref={ref}
             variants={containerVariants}
@@ -107,7 +107,7 @@ export default function Contact() {
             animate={inView ? "visible" : "hidden"}
             className="lg:col-span-1 space-y-6"
           >
-            {contactInfo.map((info, index) => (
+            {contactInfo.map((info) => (
               <motion.a
                 key={info.title}
                 href={info.link}
@@ -166,7 +166,7 @@ export default function Contact() {
             </motion.div>
           </motion.div>
           
-          {/* Formulaire de contact */}
+          
           <motion.div
             variants={itemVariants}
             initial="hidden"
