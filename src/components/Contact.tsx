@@ -88,24 +88,24 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-16 md:py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           <span className="inline-block border-b-4 border-primary pb-2">Me Contacter</span>
         </h2>
         
-        <p className="text-lg text-center max-w-3xl mx-auto mb-12">
+        <p className="text-lg text-center max-w-3xl mx-auto mb-12 px-4">
           Vous avez un projet en tête ou une question ? N&apos;hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.
         </p>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           
           <motion.div
             ref={ref}
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="lg:col-span-1 space-y-6"
+            className="lg:col-span-1 space-y-4 md:space-y-6"
           >
             {contactInfo.map((info) => (
               <motion.a
@@ -171,7 +171,7 @@ export default function Contact() {
             variants={itemVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="lg:col-span-2 bg-white dark:bg-dark rounded-xl shadow-subtle p-8"
+            className="lg:col-span-2 bg-white dark:bg-dark rounded-xl shadow-subtle p-6 md:p-8"
           >
             {submitSuccess ? (
               <motion.div
