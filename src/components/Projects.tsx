@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { CodeBracketIcon } from '@heroicons/react/24/outline';
-import { projects, categories, type Project, type CategoryId } from '@/data/projects';
+import { projects, categories, type CategoryId, type Project } from '@/data/projects';
 import ProjectCard from './ProjectCard';
-import ProjectModal from './ProjectModal';
+import ImageModal from './ImageModal';
 
-// Variants d'animation
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -32,7 +30,14 @@ export default function Projects() {
     threshold: 0.1,
   });
 
-  // Filtrer les projets en fonction de la catégorie active
+  const handleImageClick = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
+
   const filteredProjects = activeCategory === 'all'
     ? projects
     : projects.filter(project => project.category === activeCategory);
@@ -56,7 +61,6 @@ export default function Projects() {
             </p>
           </div>
           
-          {/* Filtres de catégories */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map(category => (
               <motion.button
@@ -75,34 +79,26 @@ export default function Projects() {
             ))}
           </div>
           
-          {/* Grille de projets */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map(project => (
               <motion.div key={project.id} variants={itemVariants}>
-                <ProjectCard
-                  project={project}
-                  onClick={() => setSelectedProject(project)}
+                <ProjectCard 
+                  project={project} 
+                  onImageClick={handleImageClick}
                 />
               </motion.div>
             ))}
           </div>
-          
-          {/* Modal de détails du projet */}
-          <AnimatePresence>
-            {selectedProject && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-                onClick={() => setSelectedProject(null)}
-              >
-                <ProjectModal
-                  project={selectedProject}
-                  onClose={() => setSelectedProject(null)}
-                />
-              </div>
-            )}
-          </AnimatePresence>
         </motion.div>
       </div>
+
+      {selectedProject && (
+        <ImageModal
+          isOpen={!!selectedProject}
+          onClose={handleCloseModal}
+          project={selectedProject}
+        />
+      )}
     </section>
   );
 } 

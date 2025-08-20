@@ -1,23 +1,20 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import OptimizedImage from './OptimizedImage';
+import ProfileImage from './ProfileImage';
 import { GithubIcon, LinkedInIcon, TwitterIcon } from './SocialIcons';
 
 export default function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Fond avec effet de gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-card" />
       
-      {/* Motif de fond subtil */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-interactive-primary/20 via-transparent to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Contenu texte */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -39,7 +36,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Développeur Full Stack
+              Développeur Full Stack & Designer UI/UX
             </motion.h2>
             
           
@@ -76,7 +73,6 @@ export default function Hero() {
             </motion.div>
           </motion.div>
           
-          {/* Image de profil */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -84,7 +80,7 @@ export default function Hero() {
             className="relative"
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
-              <OptimizedImage
+              <ProfileImage
                 src="/profil.jpg"
                 alt="Enez Gubeljic"
                 width={320}
@@ -93,18 +89,15 @@ export default function Hero() {
                 priority
               />
               
-              {/* Effet de halo */}
               <div className="absolute inset-0 rounded-full bg-interactive-primary/10 blur-2xl animate-pulse" />
             </div>
             
-            {/* Éléments décoratifs */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-interactive-primary/10 rounded-full blur-xl" />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-interactive-primary/5 rounded-full blur-xl" />
           </motion.div>
         </div>
       </div>
       
-      {/* Indicateur de défilement */}
       <motion.div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}

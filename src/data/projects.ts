@@ -2,11 +2,7 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  images: {
-    url: string;
-    alt: string;
-    isThumbnail?: boolean;
-  }[];
+  image: string;
   tags: string[];
   demoLink?: string;
   codeLink?: string;
@@ -26,71 +22,33 @@ export type CategoryId = typeof categories[number]['id'];
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Gestion de contenu',
-    description: 'Une plateforme moderne de gestion de contenu permettant la création et la gestion d\'articles avec une interface d\'administration intuitive.',
-    images: [
-      {
-        url: '/images/project1-thumbnail.webp',
-        alt: 'Création d\'un article',
-        isThumbnail: true
-      },
-      {
-        url: '/images/project1.2-thumbnail.webp',
-        alt: 'Gestion des articles'
-      },
-      {
-        url: '/images/project1.3-thumbnail.webp',
-        alt: 'Inscription'
-      }
-    ],
-    tags: ["Symfony 6.4", "MySQL", "Bootstrap 5", "Twig", "Doctrine"],
+    title: 'LevelList - Collection de Jeux',
+    description: 'Application full-stack pour gérer une collection de jeux vidéo. Dashboard interactif, recherche avancée, statistiques et authentification sécurisée avec architecture REST API.',
+    image: '/images/project1.png',
+    tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS", "JWT"],
+    demoLink: 'https://github.com/EEnez/levelist',
+    codeLink: 'https://github.com/EEnez/levelist',
     category: 'web',
     featured: true
   },
   {
     id: 2,
-    title: 'Site Web du Centre de Formation CF2M',
-    description: 'Le centre de formation CF2M m\'a confié la mission de redesigner leur site web pour moderniser son design et améliorer l\'expérience utilisateur.',
-    images: [
-      {
-        url: '/images/project2-thumbnail.webp',
-        alt: 'Page d\'accueil du site CF2M',
-        isThumbnail: true
-      },
-      {
-        url: '/images/project2.1-thumbnail.webp',
-        alt: 'Page des formations'
-      },
-      {
-        url: '/images/project2.2-thumbnail.webp',
-        alt: 'Informations pratiques'
-      }
-    ],
-    tags: ["Figma", "WordPress", "Kadence Theme", "HTML", "CSS", "JavaScript"],
+    title: 'Gestion de contenu',
+    description: 'Plateforme moderne de gestion de contenu avec interface d\'administration intuitive. Système complet de création et gestion d\'articles avec authentification et gestion des rôles.',
+    image: '/images/project2.png',
+    tags: ["Symfony", "MySQL", "Bootstrap", "Twig", "Doctrine"],
+    demoLink: 'https://github.com/EEnez/sym64ENEZ',
+    codeLink: 'https://github.com/EEnez/sym64ENEZ',
     category: 'web',
     featured: true
   },
   {
     id: 3,
-    title: 'LevelList - Gestionnaire de Collection de Jeux',
-    description: 'Application web full-stack développée avec React et Node.js pour gérer une collection personnelle de jeux vidéo. Interface moderne avec dashboard interactif, système de recherche avancée, gestion des statistiques de jeu et authentification sécurisée. Architecture REST API avec base de données optimisée.',
-    images: [
-      {
-        url: '/images/project3-thumbnail.webp',
-        alt: 'Dashboard principal avec statistiques de jeux',
-        isThumbnail: true
-      },
-      {
-        url: '/images/project3.1-thumbnail.webp',
-        alt: 'Interface de gestion des jeux avec filtres'
-      },
-      {
-        url: '/images/project3.2-thumbnail.webp',
-        alt: 'Formulaire d\'ajout de jeu avec validation'
-      },
-    ],
-    tags: ["React 18", "Node.js", "Express", "MySQL", "Tailwind CSS", "JWT", "Axios"],
+    title: 'Site Web CF2M',
+    description: 'Redesign complet du site du centre de formation CF2M. Design moderne et responsive avec optimisation UX pour améliorer l\'engagement et les conversions.',
+    image: '/images/project3.png',
+    tags: ["Figma", "WordPress", "HTML", "CSS", "JavaScript"],
     category: 'web',
     featured: true
   }
-]; 
+];

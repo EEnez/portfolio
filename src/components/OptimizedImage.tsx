@@ -25,10 +25,9 @@ export default function OptimizedImage({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className={`relative overflow-hidden group ${className}`}>
-      {/* Skeleton loader amélioré */}
+    <div className={`relative flex items-center justify-center ${className.includes('group') ? className : `group ${className}`}`}>
       {isLoading && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 animate-pulse rounded" />
       )}
       
       <Image
@@ -40,15 +39,24 @@ export default function OptimizedImage({
           duration-700 ease-in-out transform
           ${isLoading && !disableLoadingBlur ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0'}
           transition-transform duration-500
+          ${className.includes('object-cover') ? 'object-cover w-full h-full' : 'object-contain max-w-full max-h-full'}
         `}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
+        onError={() => setIsLoading(false)}
         quality={90}
         priority={priority}
         sizes={sizes}
+        fill={false}
+        style={{
+          objectPosition: 'center',
+          maxWidth: '100%',
+          maxHeight: '100%',
+          width: className.includes('object-cover') ? '100%' : 'auto',
+          height: className.includes('object-cover') ? '100%' : 'auto',
+        }}
       />
       
-      {/* Overlay subtil au survol */}
-      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded" />
     </div>
   );
 } 

@@ -31,97 +31,16 @@ export default function About() {
           
           <div className="bg-white dark:bg-dark shadow-subtle rounded-xl p-8 md:p-10">
             <p className="text-lg mb-6">
-            Développeur web junior full-stack basé à Bruxelles, je me spécialise dans les technologies modernes du développement web.
+            Développeur web junior full-stack basé à Bruxelles, je me spécialise dans les technologies modernes du développement web avec une forte expertise en design et UX/UI.
             </p>
             
             <p className="text-lg mb-6">
-            <strong>Côté frontend</strong>, je développe des interfaces réactives avec React 18, TypeScript et Tailwind CSS, en privilégiant l&apos;accessibilité et les performances. <strong>Côté backend</strong>, j&apos;utilise Symfony 7 et MySQL pour créer des APIs RESTful robustes et sécurisées.
+            <strong>Côté design</strong>, je maîtrise Photoshop et InDesign pour la création graphique, ainsi que Figma pour le prototypage et les interfaces. <strong>Côté frontend</strong>, je développe des interfaces réactives avec React 18, TypeScript et Tailwind CSS, en privilégiant l&apos;accessibilité et les performances. <strong>Côté backend</strong>, j&apos;utilise Symfony 7 et MySQL pour créer des APIs RESTful robustes et sécurisées.
             </p>
             
-            <p className="text-lg mb-6">
-            Mes projets démontrent cette approche moderne : applications responsive, authentification JWT, et architectures microservices. Mon objectif ? Rejoindre une équipe expérimentée où je pourrai continuer à grandir techniquement tout en contribuant à des projets innovants.
+            <p className="text-lg mb-8">
+            Ma double compétence design/développement me permet de créer des expériences utilisateur complètes, de la conception graphique à l&apos;implémentation technique. Mes projets démontrent cette approche holistique : interfaces soignées, animations fluides, architectures microservices et design systems cohérents. Mon objectif ? Rejoindre une équipe expérimentée où je pourrai continuer à grandir techniquement tout en contribuant à des projets innovants.
             </p>
-            
-            {/* Section Compétences */}
-            <div className="mt-8 mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-center">Mes Compétences</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Frontend */}
-                <div className="bg-background-secondary p-4 rounded-lg">
-                  <h4 className="font-medium text-interactive-primary mb-3">Frontend</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">React 18</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '85%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">TypeScript</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '80%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Tailwind CSS</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '90%'}}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Backend */}
-                <div className="bg-background-secondary p-4 rounded-lg">
-                  <h4 className="font-medium text-interactive-primary mb-3">Backend</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Symfony 7</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '85%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">PHP</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '90%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">MySQL</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '80%'}}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Outils & Méthodes */}
-                <div className="bg-background-secondary p-4 rounded-lg">
-                  <h4 className="font-medium text-interactive-primary mb-3">Outils & Méthodes</h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Git</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '85%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Responsive Design</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '90%'}}></div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">APIs REST</span>
-                      <div className="w-20 bg-gray-200 rounded-full h-2">
-                        <div className="bg-interactive-primary h-2 rounded-full" style={{width: '75%'}}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="text-center">
               <motion.a

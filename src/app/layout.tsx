@@ -13,6 +13,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://enez-gubeljic.com'),
   title: "Enez Gubeljic | Développeur Full Stack Junior - React, Symfony, TypeScript",
   description: "Développeur full stack junior spécialisé en React 18, TypeScript, Symfony 7 et MySQL. Portfolio avec projets concrets incluant gestion de contenu et sites clients. Basé à Bruxelles, disponible pour opportunités développement web moderne.",
   keywords: [
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     description: "Développeur full stack junior spécialisé en React, TypeScript et Symfony. Découvrez mes projets et compétences techniques.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/profil.jpg",
         width: 1200,
         height: 630,
         alt: "Portfolio Enez Gubeljic - Développeur Full Stack",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     title: "Enez Gubeljic | Développeur Full Stack Junior",
     description: "Développeur full stack junior spécialisé en React, TypeScript et Symfony. Portfolio avec projets concrets.",
     creator: "@Enez_Gubeljic",
-    images: ["/og-image.jpg"],
+    images: ["/profil.jpg"],
   },
   robots: {
     index: true,
