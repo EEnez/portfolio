@@ -1,16 +1,43 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const spaceGrotesk = localFont({
+  src: [
+    {
+      path: "../../public/fonts/SpaceGrotesk[wght].woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
+const inter = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Inter-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Inter-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Inter-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Inter-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -45,7 +72,7 @@ export const metadata: Metadata = {
     description: "Développeur full stack junior spécialisé en React, TypeScript et Symfony. Découvrez mes projets et compétences techniques.",
     images: [
       {
-        url: "/profil.jpg",
+        url: "/images/profil.jpg",
         width: 1200,
         height: 630,
         alt: "Portfolio Enez Gubeljic - Développeur Full Stack",
@@ -57,7 +84,7 @@ export const metadata: Metadata = {
     title: "Enez Gubeljic | Développeur Full Stack Junior",
     description: "Développeur full stack junior spécialisé en React, TypeScript et Symfony. Portfolio avec projets concrets.",
     creator: "@Enez_Gubeljic",
-    images: ["/profil.jpg"],
+    images: ["/images/profil.jpg"],
   },
   robots: {
     index: true,
@@ -81,7 +108,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
 
       <body
-        className={`${inter.variable} ${robotoMono.variable} antialiased bg-bg-primary dark:bg-bg-dark text-text-primary dark:text-text-primary transition-colors duration-300`}
+        className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-bg-primary dark:bg-bg-dark text-text-primary dark:text-text-primary transition-colors duration-300`}
       >
         {children}
       </body>

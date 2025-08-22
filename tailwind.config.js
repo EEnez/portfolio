@@ -61,8 +61,9 @@ module.exports = {
         light: "hsl(0, 0%, 98%)",        // Blanc cassé (pour compatibilité)
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        mono: ["var(--font-roboto-mono)"],
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "sans-serif"],
+        mono: ["Consolas", "Monaco", "Courier New", "monospace"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
