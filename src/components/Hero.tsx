@@ -39,8 +39,6 @@ export default function Hero() {
               Développeur Full Stack & Designer UI/UX
             </motion.h2>
             
-          
-            
             <motion.div 
               className="flex flex-wrap gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
@@ -81,7 +79,7 @@ export default function Hero() {
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
               <ProfileImage
-                src="/profil.jpg"
+                src="/images/profil.jpg"
                 alt="Enez Gubeljic"
                 width={320}
                 height={320}

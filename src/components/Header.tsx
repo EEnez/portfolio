@@ -17,7 +17,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +26,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
 
   useEffect(() => {
     const handleSectionVisibility = () => {
@@ -49,7 +47,7 @@ export default function Header() {
     window.addEventListener('scroll', handleSectionVisibility);
     return () => window.removeEventListener('scroll', handleSectionVisibility);
   }, []);
-  
+
   return (
     <header 
       className={`fixed w-full top-0 z-50 transition-all duration-500 ${
@@ -60,7 +58,6 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -123,7 +120,6 @@ export default function Header() {
           </motion.button>
         </div>
       </div>
-      
 
       <AnimatePresence>
         {isMenuOpen && (
