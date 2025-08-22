@@ -23,7 +23,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'LevelList - Collection de Jeux',
-    description: 'Application full-stack pour gérer une collection de jeux vidéo. Dashboard interactif, recherche avancée, statistiques et authentification sécurisée avec architecture REST API.',
+    description: 'Application pour gérer une collection de jeux vidéo. Dashboard interactif, recherche avancée, statistiques et authentification sécurisée avec architecture REST API.',
     image: '/images/project1.png',
     tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS", "JWT"],
     demoLink: 'https://github.com/EEnez/levelist',

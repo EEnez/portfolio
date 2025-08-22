@@ -15,7 +15,6 @@ export interface ValidationErrors {
 export const validateContactForm = (data: ContactFormData): ValidationErrors => {
   const errors: ValidationErrors = {};
 
-  // Validation du nom
   if (!data.name.trim()) {
     errors.name = 'Le nom est requis';
   } else if (data.name.length < 2) {
@@ -24,7 +23,6 @@ export const validateContactForm = (data: ContactFormData): ValidationErrors => 
     errors.name = 'Le nom ne doit pas dépasser 50 caractères';
   }
 
-  // Validation de l'email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!data.email.trim()) {
     errors.email = 'L\'email est requis';
@@ -32,7 +30,6 @@ export const validateContactForm = (data: ContactFormData): ValidationErrors => 
     errors.email = 'L\'email n\'est pas valide';
   }
 
-  // Validation du sujet
   if (!data.subject.trim()) {
     errors.subject = 'Le sujet est requis';
   } else if (data.subject.length < 3) {
@@ -41,7 +38,6 @@ export const validateContactForm = (data: ContactFormData): ValidationErrors => 
     errors.subject = 'Le sujet ne doit pas dépasser 100 caractères';
   }
 
-  // Validation du message
   if (!data.message.trim()) {
     errors.message = 'Le message est requis';
   } else if (data.message.length < 10) {
