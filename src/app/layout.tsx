@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     description: "Développeur full stack junior spécialisé en React, TypeScript et Symfony. Découvrez mes projets et compétences techniques.",
     images: [
       {
-        url: "/images/profil.jpg",
+        url: "/images/profil.png",
         width: 1200,
         height: 630,
         alt: "Portfolio Enez Gubeljic - Développeur Full Stack",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     title: "Enez Gubeljic | Développeur Full Stack Junior",
     description: "Développeur full stack junior spécialisé en React, TypeScript et Symfony. Portfolio avec projets concrets.",
     creator: "@Enez_Gubeljic",
-    images: ["/images/profil.jpg"],
+    images: ["/images/profil.png"],
   },
   robots: {
     index: true,

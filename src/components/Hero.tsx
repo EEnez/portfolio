@@ -79,7 +79,7 @@ export default function Hero() {
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
               <ProfileImage
-                src="/images/profil.jpg"
+                src="/images/profil.png"
                 alt="Enez Gubeljic"
                 width={320}
                 height={320}
