@@ -32,6 +32,10 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitError('');
     
+    console.log('=== FRONTEND DEBUG START ===');
+    console.log('Form data being sent:', formData);
+    console.log('API endpoint:', '/api/contact');
+    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -41,12 +45,18 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
       const result = await response.json();
+      console.log('Response body:', result);
 
       if (!response.ok) {
+        console.error('API returned error status:', response.status);
         throw new Error(result.error || 'Failed to send message');
       }
 
+      console.log('Email sent successfully!');
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       
@@ -54,6 +64,11 @@ export default function Contact() {
         setSubmitSuccess(false);
       }, 5000);
     } catch (error) {
+      console.error('=== FRONTEND ERROR ===');
+      console.error('Error type:', error instanceof Error ? error.constructor.name : typeof error);
+      console.error('Error message:', error instanceof Error ? error.message : String(error));
+      console.error('Full error:', error);
+      
       setSubmitError(
         error instanceof Error 
           ? error.message 
@@ -61,6 +76,7 @@ export default function Contact() {
       );
     } finally {
       setIsSubmitting(false);
+      console.log('=== FRONTEND DEBUG END ===');
     }
   };
 
