@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
 
 export default function Contact() {
-  console.log('Contact component rendering...'); // Test if component renders
+  console.log('Contact component rendering...');
   
   const [formData, setFormData] = useState({
     name: '',
@@ -51,7 +51,19 @@ export default function Contact() {
       console.log('Response body:', result);
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        if (response.status === 400) {
+          if (result.details && Array.isArray(result.details)) {
+            throw new Error(`Erreur de validation: ${result.details.join(', ')}`);
+          } else {
+            throw new Error(result.error || 'Données invalides');
+          }
+        } else if (response.status === 429) {
+          throw new Error('Trop de tentatives. Veuillez réessayer plus tard.');
+        } else if (response.status === 500) {
+          throw new Error(result.error || 'Erreur serveur. Veuillez réessayer plus tard.');
+        } else {
+          throw new Error(result.error || `Erreur ${response.status}: ${result.details || 'Erreur inconnue'}`);
+        }
       }
 
       console.log('Email sent successfully!');
@@ -63,11 +75,24 @@ export default function Contact() {
       }, 5000);
     } catch (error) {
       console.error('Error sending email:', error);
-      setSubmitError(
-        error instanceof Error 
-          ? error.message 
-          : 'Une erreur est survenue. Veuillez réessayer.'
-      );
+      
+      let errorMessage = 'Une erreur est survenue. Veuillez réessayer.';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+          errorMessage = 'Erreur de connexion. Vérifiez votre connexion internet et réessayez.';
+        } else if (error.message.includes('timeout')) {
+          errorMessage = 'La requête a pris trop de temps. Veuillez réessayer.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
+      setSubmitError(errorMessage);
+      
+      setTimeout(() => {
+        setSubmitError('');
+      }, 8000);
     } finally {
       setIsSubmitting(false);
     }
