@@ -1,17 +1,55 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
-    // Debug: Check if environment variable is loaded
-    console.log('RESEND_API_KEY loaded:', process.env.RESEND_API_KEY ? 'YES' : 'NO');
-    console.log('RESEND_API_KEY length:', process.env.RESEND_API_KEY?.length || 0);
+    // Enhanced debugging
+    console.log('=== CONTACT API DEBUG START ===');
+    console.log('Request method:', request.method);
+    console.log('Request URL:', request.url);
     
-    const { name, email, subject, message } = await request.json();
+    // Environment variable debugging
+    console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
+    console.log('RESEND_API_KEY length:', process.env.RESEND_API_KEY?.length || 0);
+    console.log('RESEND_API_KEY first 10 chars:', process.env.RESEND_API_KEY?.substring(0, 10) || 'N/A');
+    console.log('RESEND_FROM_EMAIL:', process.env.RESEND_FROM_EMAIL);
+    
+    // Check if Resend is properly initialized
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is missing from environment variables');
+      return NextResponse.json(
+        { error: 'Server configuration error: API key missing' },
+        { status: 500 }
+      );
+    }
+    
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    console.log('Resend instance created successfully');
+    
+    // Parse request body
+    let body;
+    try {
+      body = await request.json();
+      console.log('Request body parsed successfully:', { 
+        name: body.name ? 'present' : 'missing',
+        email: body.email ? 'present' : 'missing', 
+        subject: body.subject ? 'present' : 'missing',
+        message: body.message ? 'present' : 'missing'
+      });
+    } catch (parseError) {
+      console.error('Failed to parse request body:', parseError);
+      return NextResponse.json(
+        { error: 'Invalid request body format' },
+        { status: 400 }
+      );
+    }
+    
+    const { name, email, subject, message } = body;
 
+    // Validation with detailed logging
+    console.log('Validating fields...');
     if (!name || !email || !subject || !message) {
+      console.log('Missing fields:', { name: !!name, email: !!email, subject: !!subject, message: !!message });
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -20,14 +58,17 @@ export async function POST(request: NextRequest) {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      console.log('Invalid email format:', email);
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
+    
+    console.log('All validations passed, preparing to send email...');
 
     const data = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
       to: 'enezgubeljic@gmail.com', 
       subject: `Portfolio Contact: ${subject}`,
       html: `
@@ -70,13 +111,21 @@ This email was sent from your portfolio contact form.
       `,
     });
 
+    console.log('Email sent successfully via Resend:', data);
+    console.log('=== CONTACT API DEBUG END ===');
+
     return NextResponse.json(
       { message: 'Email sent successfully', data },
       { status: 200 }
     );
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('=== CONTACT API ERROR ===');
+    console.error('Error type:', error instanceof Error ? error.constructor.name : typeof error);
+    console.error('Error message:', error instanceof Error ? error.message : String(error));
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+    console.error('Full error object:', error);
+    console.error('=== END ERROR LOG ===');
     
     return NextResponse.json(
       { error: 'Failed to send email. Please try again later.' },
