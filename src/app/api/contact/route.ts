@@ -5,6 +5,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
+    // Debug: Check if environment variable is loaded
+    console.log('RESEND_API_KEY loaded:', process.env.RESEND_API_KEY ? 'YES' : 'NO');
+    console.log('RESEND_API_KEY length:', process.env.RESEND_API_KEY?.length || 0);
+    
     const { name, email, subject, message } = await request.json();
 
     if (!name || !email || !subject || !message) {
