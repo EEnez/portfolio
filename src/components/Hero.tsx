@@ -6,7 +6,7 @@ import { GithubIcon, LinkedInIcon, TwitterIcon } from './SocialIcons';
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 md:pb-20">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-card" />
       
       <div className="absolute inset-0 opacity-5">
@@ -75,9 +75,9 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative pb-8 md:pb-12"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-4">
               <ProfileImage
                 src="/images/profil.png"
                 alt="Enez Gubeljic"

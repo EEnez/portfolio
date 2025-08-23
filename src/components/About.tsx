@@ -15,7 +15,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-dark">
+    <section id="about" className="pt-24 pb-20 bg-white dark:bg-dark">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
