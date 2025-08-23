@@ -28,6 +28,7 @@ export default function Contact() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log('handleSubmit called!'); // Simple debug
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError('');
@@ -78,6 +79,12 @@ export default function Contact() {
       setIsSubmitting(false);
       console.log('=== FRONTEND DEBUG END ===');
     }
+  };
+
+  // Backup function to test if the button click works
+  const handleButtonClick = () => {
+    console.log('Button clicked!');
+    console.log('Form data:', formData);
   };
 
   const contactInfo = [
@@ -287,6 +294,7 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
+                onClick={handleButtonClick} // Added onClick handler
                 className={`w-full px-6 py-3 bg-primary text-white rounded-md font-medium transition-colors ${
                   isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-interactive-hover'
                 }`}
