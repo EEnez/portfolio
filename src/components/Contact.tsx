@@ -82,9 +82,56 @@ export default function Contact() {
   };
 
   // Backup function to test if the button click works
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     console.log('Button clicked!');
     console.log('Form data:', formData);
+    
+    // Check if form is valid
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      console.log('Form validation failed - missing fields');
+      setSubmitError('Veuillez remplir tous les champs');
+      return;
+    }
+    
+    // Call the original submit logic
+    console.log('Calling form submission logic...');
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Response status:', response.status);
+      const result = await response.json();
+      console.log('Response body:', result);
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      console.log('Email sent successfully!');
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitError(
+        error instanceof Error 
+          ? error.message 
+          : 'Une erreur est survenue. Veuillez réessayer.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -292,9 +339,9 @@ export default function Contact() {
               </div>
               
               <motion.button
-                type="submit"
+                type="button"
                 disabled={isSubmitting}
-                onClick={handleButtonClick} // Added onClick handler
+                onClick={handleButtonClick}
                 className={`w-full px-6 py-3 bg-primary text-white rounded-md font-medium transition-colors ${
                   isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-interactive-hover'
                 }`}
