@@ -106,7 +106,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
-
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-bg-primary dark:bg-bg-dark text-text-primary dark:text-text-primary transition-colors duration-300`}
       >
