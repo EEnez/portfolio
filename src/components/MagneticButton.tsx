@@ -10,7 +10,7 @@ interface MagneticButtonProps {
   as?: 'button' | 'a';
   href?: string;
   onClick?: () => void;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export default function MagneticButton({ 
@@ -55,7 +55,7 @@ export default function MagneticButton({
 
   return (
     <motion.div
-      ref={ref as any}
+      ref={ref as React.RefObject<HTMLDivElement>}
       className="inline-block cursor-pointer"
       style={{ x, y, rotateX, rotateY }}
       onMouseMove={handleMouseMove}

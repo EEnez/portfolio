@@ -29,8 +29,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <span className="text-interactive-primary block sm:inline">Enez</span>{" "}
-              <span className="block sm:inline">Gubeljic</span>
+              <span className="text-interactive-primary">Enez</span> Gubeljic
             </motion.h1>
             
             <motion.h2 
@@ -47,15 +46,15 @@ export default function Hero() {
             </motion.h2>
             
             <motion.div 
-              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <MagneticButton as="a" href="#contact" className="btn-primary" intensity={0.4}>
+              <MagneticButton as="a" href="#contact" className="btn-primary w-full sm:w-auto" intensity={0.4}>
                 Me Contacter
               </MagneticButton>
-              <MagneticButton as="a" href="#projects" className="btn-outline" intensity={0.3}>
+              <MagneticButton as="a" href="#projects" className="btn-outline w-full sm:w-auto" intensity={0.3}>
                 Voir mes Projets
               </MagneticButton>
             </motion.div>
