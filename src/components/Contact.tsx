@@ -101,7 +101,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20">
+    <section id="contact" className="py-20 md:py-24">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           <span className="inline-block border-b-4 border-primary pb-2">Me Contacter</span>

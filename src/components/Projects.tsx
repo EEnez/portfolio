@@ -43,7 +43,7 @@ export default function Projects() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="py-20 bg-background-secondary">
+    <section id="projects" className="py-20 md:py-24 bg-background-secondary">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
