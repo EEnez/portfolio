@@ -12,38 +12,82 @@ export interface ValidationErrors {
   message?: string;
 }
 
+export const sanitizeInput = (input: string): string => {
+  return input
+    .trim()
+    .replace(/[<>]/g, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+\s*=/gi, '');
+};
+
+export const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  return emailRegex.test(email) && email.length <= 254;
+};
+
+export const containsMaliciousContent = (text: string): boolean => {
+  const maliciousPatterns = [
+    /<script[^>]*>.*?<\/script>/gi,
+    /javascript:/gi,
+    /vbscript:/gi,
+    /data:text\/html/gi,
+    /on\w+\s*=/gi,
+    /<iframe[^>]*>/gi,
+    /<object[^>]*>/gi,
+    /<embed[^>]*>/gi
+  ];
+  
+  return maliciousPatterns.some(pattern => pattern.test(text));
+};
+
 export const validateContactForm = (data: ContactFormData): ValidationErrors => {
   const errors: ValidationErrors = {};
 
-  if (!data.name.trim()) {
+  const sanitizedData = {
+    name: sanitizeInput(data.name),
+    email: sanitizeInput(data.email),
+    subject: sanitizeInput(data.subject),
+    message: sanitizeInput(data.message)
+  };
+
+  if (!sanitizedData.name) {
     errors.name = 'Le nom est requis';
-  } else if (data.name.length < 2) {
+  } else if (sanitizedData.name.length < 2) {
     errors.name = 'Le nom doit contenir au moins 2 caractères';
-  } else if (data.name.length > 50) {
-    errors.name = 'Le nom ne doit pas dépasser 50 caractères';
+  } else if (sanitizedData.name.length > 100) {
+    errors.name = 'Le nom ne doit pas dépasser 100 caractères';
+  } else if (containsMaliciousContent(sanitizedData.name)) {
+    errors.name = 'Le nom contient des caractères non autorisés';
+  } else if (!/^[a-zA-ZÀ-ÿ\s\-']+$/.test(sanitizedData.name)) {
+    errors.name = 'Le nom ne peut contenir que des lettres, espaces, tirets et apostrophes';
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!data.email.trim()) {
+  if (!sanitizedData.email) {
     errors.email = 'L\'email est requis';
-  } else if (!emailRegex.test(data.email)) {
+  } else if (!isValidEmail(sanitizedData.email)) {
     errors.email = 'L\'email n\'est pas valide';
+  } else if (containsMaliciousContent(sanitizedData.email)) {
+    errors.email = 'L\'email contient des caractères non autorisés';
   }
 
-  if (!data.subject.trim()) {
+  if (!sanitizedData.subject) {
     errors.subject = 'Le sujet est requis';
-  } else if (data.subject.length < 3) {
+  } else if (sanitizedData.subject.length < 3) {
     errors.subject = 'Le sujet doit contenir au moins 3 caractères';
-  } else if (data.subject.length > 100) {
-    errors.subject = 'Le sujet ne doit pas dépasser 100 caractères';
+  } else if (sanitizedData.subject.length > 200) {
+    errors.subject = 'Le sujet ne doit pas dépasser 200 caractères';
+  } else if (containsMaliciousContent(sanitizedData.subject)) {
+    errors.subject = 'Le sujet contient des caractères non autorisés';
   }
 
-  if (!data.message.trim()) {
+  if (!sanitizedData.message) {
     errors.message = 'Le message est requis';
-  } else if (data.message.length < 10) {
+  } else if (sanitizedData.message.length < 10) {
     errors.message = 'Le message doit contenir au moins 10 caractères';
-  } else if (data.message.length > 1000) {
-    errors.message = 'Le message ne doit pas dépasser 1000 caractères';
+  } else if (sanitizedData.message.length > 2000) {
+    errors.message = 'Le message ne doit pas dépasser 2000 caractères';
+  } else if (containsMaliciousContent(sanitizedData.message)) {
+    errors.message = 'Le message contient des caractères non autorisés';
   }
 
   return errors;

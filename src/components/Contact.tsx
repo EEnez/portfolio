@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { validateContactForm, sanitizeInput, type ContactFormData, type ValidationErrors } from '@/utils/validation';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
@@ -16,6 +17,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
   
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -24,13 +26,27 @@ export default function Contact() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const sanitizedValue = sanitizeInput(value);
+    setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    
+    // Clear validation error for this field when user starts typing
+    if (validationErrors[name as keyof ValidationErrors]) {
+      setValidationErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError('');
+    
+    // Validate form before submission
+    const errors = validateContactForm(formData);
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       const response = await fetch('/api/contact', {
@@ -49,6 +65,7 @@ export default function Contact() {
 
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
+      setValidationErrors({});
       
       setTimeout(() => {
         setSubmitSuccess(false);
@@ -215,9 +232,18 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-border dark:border-border-dark bg-white dark:bg-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                    className={`w-full px-4 py-3 rounded-lg border ${
+                      validationErrors.name 
+                        ? 'border-red-500 focus:ring-red-500' 
+                        : 'border-border dark:border-border-dark focus:ring-primary'
+                    } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
                     placeholder="Enez Gubeljic"
                   />
+                  {validationErrors.name && (
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {validationErrors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
@@ -230,9 +256,18 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-border dark:border-border-dark bg-white dark:bg-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                    className={`w-full px-4 py-3 rounded-lg border ${
+                      validationErrors.email 
+                        ? 'border-red-500 focus:ring-red-500' 
+                        : 'border-border dark:border-border-dark focus:ring-primary'
+                    } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
                     placeholder="enezgubeljic@gmail.com"
                   />
+                  {validationErrors.email && (
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {validationErrors.email}
+                    </p>
+                  )}
                 </div>
               </div>
               
@@ -247,9 +282,18 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-border dark:border-border-dark bg-white dark:bg-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    validationErrors.subject 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-border dark:border-border-dark focus:ring-primary'
+                  } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
                   placeholder="Sujet de votre message"
                 />
+                {validationErrors.subject && (
+                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    {validationErrors.subject}
+                  </p>
+                )}
               </div>
               
               <div>
@@ -263,9 +307,18 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 rounded-lg border border-border dark:border-border-dark bg-white dark:bg-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    validationErrors.message 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-border dark:border-border-dark focus:ring-primary'
+                  } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
                   placeholder="Votre message..."
                 ></textarea>
+                {validationErrors.message && (
+                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    {validationErrors.message}
+                  </p>
+                )}
               </div>
               
               <motion.button
