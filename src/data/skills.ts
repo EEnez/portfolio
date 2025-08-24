@@ -3,6 +3,7 @@ export interface Skill {
   category: string;
   highlighted?: boolean;
   description?: string;
+  techSkill?: boolean;
 }
 
 export interface SkillCategory {
@@ -18,9 +19,9 @@ export const skillCategories: SkillCategory[] = [
     name: 'Frontend Development',
     description: 'Création d\'interfaces utilisateur modernes et réactives',
     skills: [
-      { name: 'React Ecosystem', category: 'frontend', highlighted: true, description: 'React 18, Next.js, TypeScript' },
+      { name: 'React Ecosystem', category: 'frontend', highlighted: true, techSkill: true, description: 'React 18, Next.js, TypeScript' },
       { name: 'Modern CSS', category: 'frontend', highlighted: true, description: 'Tailwind CSS, CSS3, Responsive Design' },
-      { name: 'JavaScript ES6+', category: 'frontend', description: 'Vanilla JS moderne et asynchrone' },
+      { name: 'JavaScript ES6+', category: 'frontend', techSkill: true, description: 'Vanilla JS moderne et asynchrone' },
       { name: 'Framer Motion', category: 'frontend', description: 'Animations et micro-interactions' }
     ]
   },
@@ -29,10 +30,10 @@ export const skillCategories: SkillCategory[] = [
     name: 'Backend Development', 
     description: 'Développement d\'APIs robustes et architecture serveur',
     skills: [
-      { name: 'PHP & Symfony', category: 'backend', highlighted: true, description: 'PHP 8.x, Symfony 7, Doctrine ORM' },
-      { name: 'API Development', category: 'backend', highlighted: true, description: 'REST APIs, JWT, API Platform' },
-      { name: 'Node.js', category: 'backend', description: 'Express.js, server-side JavaScript' },
-      { name: 'Database Design', category: 'backend', description: 'MySQL, PostgreSQL, optimisation' }
+      { name: 'PHP & Symfony', category: 'backend', highlighted: true, techSkill: true, description: 'PHP 8.x, Symfony 7, Doctrine ORM' },
+      { name: 'API Development', category: 'backend', highlighted: true, techSkill: true, description: 'REST APIs, JWT, API Platform' },
+      { name: 'Node.js', category: 'backend', techSkill: true, description: 'Express.js, server-side JavaScript' },
+      { name: 'Database Design', category: 'backend', techSkill: true, description: 'MySQL, PostgreSQL, optimisation' }
     ]
   },
   {
@@ -51,9 +52,9 @@ export const skillCategories: SkillCategory[] = [
     name: 'Outils & Workflow',
     description: 'Environnement de développement et outils de productivité', 
     skills: [
-      { name: 'Git & GitHub', category: 'tools', highlighted: true, description: 'Versionning, collaboration, CI/CD' },
-      { name: 'Development Environment', category: 'tools', description: 'VS Code, Terminal, Package managers' },
-      { name: 'Docker', category: 'tools', description: 'Containerisation et déploiement' }
+      { name: 'Git & GitHub', category: 'tools', highlighted: true, techSkill: true, description: 'Versionning, collaboration, CI/CD' },
+      { name: 'Development Environment', category: 'tools', techSkill: true, description: 'VS Code, Terminal, Package managers' },
+      { name: 'Docker', category: 'tools', techSkill: true, description: 'Containerisation et déploiement' }
     ]
   }
 ];

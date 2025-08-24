@@ -109,13 +109,19 @@ export default function Skills() {
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
                           <div className="flex items-start gap-3 mb-1">
-                            <h4 className={`font-medium transition-colors ${skill.highlighted ? 'text-interactive-primary' : 'text-text-primary group-hover:text-interactive-primary'}`}>
+                            <h4 className={`font-medium transition-colors ${
+                              skill.highlighted 
+                                ? (skill.techSkill ? 'text-accent-tech' : 'text-interactive-primary')
+                                : (skill.techSkill ? 'text-text-primary group-hover:text-accent-tech' : 'text-text-primary group-hover:text-interactive-primary')
+                            }`}>
                               {skill.name}
                             </h4>
                             {skill.highlighted && (
                               <motion.div
                                 variants={badgeVariants}
-                                className="w-2 h-2 bg-interactive-primary rounded-full flex-shrink-0 mt-2"
+                                className={`w-2 h-2 rounded-full flex-shrink-0 mt-2 ${
+                                  skill.techSkill ? 'bg-accent-tech' : 'bg-interactive-primary'
+                                }`}
                               />
                             )}
                           </div>

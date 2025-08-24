@@ -4,72 +4,69 @@
 
 @layer base {
   :root {
-    /* === JAPANESE-INSPIRED PALETTE === */
-    
-    /* Anthracite Backgrounds (Sumi ink inspired) */
-    --background: 220 15% 8%;           /* Main anthracite */
-    --background-lighter: 215 12% 12%;  /* Lighter anthracite */
-    --background-card: 210 18% 11%;     /* Card backgrounds with subtle blue */
-    --background-hover: 208 20% 15%;    /* Hover states */
-    --background-secondary: 218 14% 10%; /* Secondary backgrounds */
-    --foreground: 210 20% 98%;          /* Warm white text */
+    /* Backgrounds */
+    --background: 220 15% 8%;
+    --background-lighter: 215 12% 12%;
+    --background-card: 210 18% 11%;
+    --background-hover: 208 20% 15%;
+    --background-secondary: 218 14% 10%;
+    --foreground: 210 20% 98%;
 
-    /* Urushi Red (Japanese lacquer inspired) */
-    --interactive-primary: 355 70% 42%;    /* Main Urushi red */
-    --interactive-hover: 355 75% 48%;      /* Hover state */
-    --interactive-active: 355 65% 38%;     /* Active state */
-    --interactive-light: 355 60% 55%;      /* Light variant */
-    --interactive-dark: 355 80% 35%;       /* Dark variant */
+    /* Primary colors */
+    --interactive-primary: 355 70% 42%;
+    --interactive-hover: 355 75% 48%;
+    --interactive-active: 355 65% 38%;
+    --interactive-light: 355 60% 55%;
+    --interactive-dark: 355 80% 35%;
 
-    /* Cyan Tech Accent (Modern complement) */
-    --accent-tech: 190 85% 55%;            /* Cyan for tech elements */
-    --accent-tech-hover: 190 90% 60%;      /* Hover variant */
-    --accent-tech-muted: 190 60% 45%;      /* Muted variant */
+    /* Tech accent */
+    --accent-tech: 190 85% 55%;
+    --accent-tech-hover: 190 90% 60%;
+    --accent-tech-muted: 190 60% 45%;
 
-    /* Borders (Subtle anthracite variations) */
-    --border: 220 12% 25%;                 /* Main borders */
-    --border-light: 215 15% 35%;           /* Light borders */
-    --border-dark: 225 10% 18%;            /* Dark borders */
+    /* Borders */
+    --border: 220 12% 25%;
+    --border-light: 215 15% 35%;
+    --border-dark: 225 10% 18%;
 
-    /* System Colors (Enhanced for Japanese aesthetic) */
-    --solid-primary: 220 15% 8%;          /* Same as background */
-    --solid-secondary: 355 70% 42%;       /* Urushi red */
-    --solid-accent: 190 85% 55%;          /* Cyan tech */
-    --solid-success: 140 50% 45%;         /* Refined green */
-    --solid-warning: 38 85% 50%;          /* Refined amber */
-    --solid-error: 355 75% 55%;           /* Error using Urushi red variant */
-    --solid-info: 200 70% 50%;            /* Info blue */
+    /* System colors */
+    --solid-primary: 220 15% 8%;
+    --solid-secondary: 355 70% 42%;
+    --solid-accent: 190 85% 55%;
+    --solid-success: 140 50% 45%;
+    --solid-warning: 38 85% 50%;
+    --solid-error: 355 75% 55%;
+    --solid-info: 200 70% 50%;
 
-    /* Text Colors (Warmer and more sophisticated) */
-    --text-primary: 210 20% 98%;          /* Warm white */
-    --text-secondary: 215 15% 75%;        /* Warm grey */
-    --text-muted: 220 12% 55%;            /* Muted grey */
-    --text-accent: 355 70% 55%;           /* Urushi red for accents */
-    --text-tech: 190 80% 60%;             /* Cyan for tech content */
-    --text-light: 210 15% 90%;            /* Light variant */
-    --text-dark: 220 25% 12%;             /* Dark text */
-    --text-white: 0 0% 100%;              /* Pure white when needed */
-    --text-hover: 210 18% 95%;            /* Hover text */
+    /* Text colors */
+    --text-primary: 210 20% 98%;
+    --text-secondary: 215 15% 75%;
+    --text-muted: 220 12% 55%;
+    --text-accent: 355 70% 55%;
+    --text-tech: 190 80% 60%;
+    --text-light: 210 15% 90%;
+    --text-dark: 220 25% 12%;
+    --text-white: 0 0% 100%;
+    --text-hover: 210 18% 95%;
 
-    /* Legacy aliases (for compatibility) */
+    /* Legacy */
     --bg-primary: 220 15% 8%;
     --bg-secondary: 215 12% 12%;
     --bg-dark: 225 18% 6%;
   }
 
   .dark {
-    /* Enhanced dark mode (deeper Japanese aesthetics) */
-    --background: 225 18% 6%;              /* Deeper sumi */
-    --background-lighter: 220 15% 9%;      /* Slightly lighter */
-    --background-hover: 215 12% 12%;       /* Hover variant */
-    --foreground: 210 20% 99%;             /* Warmer white */
-    --border: 220 12% 28%;                 /* Visible borders */
+    --background: 225 18% 6%;
+    --background-lighter: 220 15% 9%;
+    --background-hover: 215 12% 12%;
+    --foreground: 210 20% 99%;
+    --border: 220 12% 28%;
     
-    --interactive-primary: 355 75% 45%;    /* Stronger Urushi in dark */
-    --interactive-hover: 355 80% 52%;      /* Brighter hover */
-    --interactive-light: 355 65% 60%;      /* Light variant */
-    --accent-tech: 190 90% 60%;            /* Brighter cyan in dark */
-    --solid-accent: 190 85% 50%;           /* Cyan accent */
+    --interactive-primary: 355 75% 45%;
+    --interactive-hover: 355 80% 52%;
+    --interactive-light: 355 65% 60%;
+    --accent-tech: 190 90% 60%;
+    --solid-accent: 190 85% 50%;
   }
   
   body {
@@ -121,12 +118,6 @@
     box-shadow: 
       0 4px 20px hsl(var(--background) / 0.3), 
       0 2px 4px hsl(var(--interactive-primary) / 0.1);
-  }
-  
-  .shadow-tech {
-    box-shadow: 
-      0 4px 20px hsl(var(--background) / 0.3), 
-      0 2px 4px hsl(var(--accent-tech) / 0.1);
   }
   
   .animate-fade-in-up {

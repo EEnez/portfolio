@@ -15,8 +15,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        // === JAPANESE-INSPIRED PALETTE ===
-        
         border: {
           DEFAULT: "hsl(var(--border))",
           light: "hsl(var(--border-light))",
@@ -31,7 +29,6 @@ module.exports = {
         },
         foreground: "hsl(var(--foreground))",
         
-        // Urushi Red System
         interactive: {
           primary: "hsl(var(--interactive-primary))",
           hover: "hsl(var(--interactive-hover))",
@@ -40,14 +37,12 @@ module.exports = {
           dark: "hsl(var(--interactive-dark))",
         },
         
-        // Cyan Tech System
         accent: {
           tech: "hsl(var(--accent-tech))",
           "tech-hover": "hsl(var(--accent-tech-hover))",
           "tech-muted": "hsl(var(--accent-tech-muted))",
         },
         
-        // System Colors
         solid: {
           primary: "hsl(var(--solid-primary))",
           secondary: "hsl(var(--solid-secondary))",
@@ -58,7 +53,6 @@ module.exports = {
           info: "hsl(var(--solid-info))",
         },
         
-        // Enhanced Text System
         text: {
           primary: "hsl(var(--text-primary))",
           secondary: "hsl(var(--text-secondary))",
@@ -71,7 +65,6 @@ module.exports = {
           hover: "hsl(var(--text-hover))",
         },
         
-        // Legacy aliases for compatibility
         primary: "hsl(var(--interactive-primary))",
         secondary: "hsl(var(--solid-accent))",
         dark: "hsl(var(--background))",
@@ -97,10 +90,7 @@ module.exports = {
         },
       },
       boxShadow: {
-        'subtle': '0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1)',
         'floating': '0 4px 20px hsl(var(--background) / 0.3), 0 2px 4px hsl(var(--interactive-primary) / 0.1)',
-        'tech': '0 4px 20px hsl(var(--background) / 0.3), 0 2px 4px hsl(var(--accent-tech) / 0.1)',
-        'japanese': '0 8px 32px hsl(var(--background) / 0.4), 0 4px 12px hsl(var(--interactive-primary) / 0.15)',
       },
     },
   },

@@ -77,7 +77,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
               href={project.codeLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-4 py-2.5 border border-interactive-primary text-interactive-primary rounded-lg font-medium hover:bg-interactive-primary/10 transition-colors text-sm"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 border border-accent-tech text-accent-tech rounded-lg font-medium hover:bg-accent-tech/10 transition-colors text-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

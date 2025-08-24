@@ -1,6 +1,6 @@
 export const GithubIcon = () => (
   <svg 
-    className="w-6 h-6 transition-all duration-300 ease-in-out group-hover:scale-125 group-hover:rotate-12 group-hover:text-interactive-primary group-hover:drop-shadow-lg hover:animate-wiggle" 
+    className="w-6 h-6 transition-all duration-300 ease-in-out group-hover:scale-125 group-hover:rotate-12 group-hover:text-accent-tech group-hover:drop-shadow-lg hover:animate-wiggle" 
     fill="currentColor" 
     viewBox="0 0 24 24"
   >
