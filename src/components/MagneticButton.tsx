@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useSpring, useTransform } from 'framer-motion';
 
 interface MagneticButtonProps {
@@ -22,6 +22,7 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const x = useSpring(0, { stiffness: 300, damping: 30 });
   const y = useSpring(0, { stiffness: 300, damping: 30 });
@@ -29,8 +30,24 @@ export default function MagneticButton({
   const rotateX = useTransform(y, [-50, 50], [5, -5]);
   const rotateY = useTransform(x, [-50, 50], [-5, 5]);
 
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        x.set(0);
+        y.set(0);
+      }
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, [x, y]);
+
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (!ref.current || isMobile) return;
 
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -56,12 +73,12 @@ export default function MagneticButton({
   return (
     <motion.div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className="inline-block cursor-pointer"
-      style={{ x, y, rotateX, rotateY }}
+      className={`inline-block cursor-pointer ${isMobile ? 'relative' : ''}`}
+      style={isMobile ? {} : { x, y, rotateX, rotateY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-      whileHover={{ scale: 1.05 }}
+      whileHover={isMobile ? {} : { scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
       <Component

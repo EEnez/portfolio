@@ -46,7 +46,7 @@ export default function Hero() {
             </motion.h2>
             
             <motion.div 
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-6 sm:gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}

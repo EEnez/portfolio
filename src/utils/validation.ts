@@ -20,9 +20,10 @@ export const sanitizeInput = (input: string): string => {
     .replace(/on\w+\s*=/gi, '');
 };
 
+export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
 export const isValidEmail = (email: string): boolean => {
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  return emailRegex.test(email) && email.length <= 254;
+  return EMAIL_REGEX.test(email) && email.length <= 254;
 };
 
 export const containsMaliciousContent = (text: string): boolean => {

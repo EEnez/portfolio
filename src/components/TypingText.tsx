@@ -29,9 +29,7 @@ export default function TypingText({
     }
     
     if (currentIndex > 0 && currentIndex <= text.length) {
-      if (currentIndex <= text.length) {
-        setDisplayText(text.slice(0, currentIndex));
-      }
+      setDisplayText(text.slice(0, currentIndex));
       
       if (currentIndex < text.length) {
         const timer = setTimeout(() => {

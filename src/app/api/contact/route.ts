@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { EMAIL_REGEX } from '@/utils/validation';
 
 function escapeHtml(text: string): string {
   const map: { [key: string]: string } = {
@@ -55,8 +56,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    if (!emailRegex.test(email)) {
+    if (!EMAIL_REGEX.test(email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
