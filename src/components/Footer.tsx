@@ -14,7 +14,7 @@ export default function Footer() {
               Portfolio
             </Link>
             <p className="mt-2 text-muted max-w-md">
-              Creative developer
+              CODE &amp; UX
             </p>
           </div>
           
@@ -35,11 +35,6 @@ export default function Footer() {
                 <li>
                   <Link href="#projects" className="text-muted hover:text-primary transition-colors">
                     Projets
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#contact" className="text-muted hover:text-primary transition-colors">
-                    Contact
                   </Link>
                 </li>
               </ul>
