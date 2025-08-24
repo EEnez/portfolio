@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import ProfileImage from './ProfileImage';
 import { GithubIcon, LinkedInIcon, TwitterIcon } from './SocialIcons';
+import TypingText from './TypingText';
+import MagneticButton from './MagneticButton';
 
 export default function Hero() {
   return (
@@ -31,12 +33,16 @@ export default function Hero() {
             </motion.h1>
             
             <motion.h2 
-              className="text-xl md:text-2xl text-text-secondary mb-8"
+              className="text-xl md:text-2xl text-text-secondary mb-8 min-h-[2.5rem] md:min-h-[3rem]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Développeur Full Stack & Designer UI/UX
+              <TypingText 
+                text="Développeur Full Stack & Designer UI/UX"
+                delay={1200}
+                speed={80}
+              />
             </motion.h2>
             
             <motion.div 
@@ -45,12 +51,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <a href="#contact" className="btn-primary">
+              <MagneticButton as="a" href="#contact" className="btn-primary" intensity={0.4}>
                 Me Contacter
-              </a>
-              <a href="#projects" className="btn-outline">
+              </MagneticButton>
+              <MagneticButton as="a" href="#projects" className="btn-outline" intensity={0.3}>
                 Voir mes Projets
-              </a>
+              </MagneticButton>
             </motion.div>
             
             <motion.div 

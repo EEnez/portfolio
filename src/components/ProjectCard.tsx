@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowTopRightOnSquareIcon, CodeBracketIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
 import type { Project } from '@/data/projects';
 import ProjectImage from './ProjectImage';
 
@@ -9,6 +10,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onImageClick }: ProjectCardProps) {
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
