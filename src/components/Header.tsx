@@ -64,10 +64,10 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-interactive-primary via-interactive-hover to-interactive-primary origin-left"
-        style={{ scaleX }}
-      />
+              <motion.div
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-interactive-primary via-accent-tech to-interactive-primary origin-left"
+          style={{ scaleX }}
+        />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <motion.div

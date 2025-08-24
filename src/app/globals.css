@@ -4,56 +4,72 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --background-lighter: 0 0% 8%;
-    --background-card: 0 0% 6%;
-    --background-hover: 0 0% 10%;
-    --foreground: 0 0% 98%;
-
-    --interactive-primary: 0 85% 45%;
-    --interactive-hover: 0 85% 55%;
-    --interactive-active: 0 85% 40%;
-    --interactive-light: 0 85% 65%;
-    --interactive-dark: 0 85% 35%;
-
-    --border: 0 0% 20%;
-    --border-light: 0 60% 50%;
-    --border-dark: 0 0% 15%;
-
-    --solid-primary: 0 0% 8%;
-    --solid-secondary: 0 85% 45%;
-    --solid-accent: 350 80% 40%;
-    --solid-success: 120 60% 40%;
-    --solid-warning: 32 95% 49%;
-    --solid-error: 0 90% 60%;
-    --solid-info: 195 94% 48%;
-
+    /* === JAPANESE-INSPIRED PALETTE === */
     
-    --text-primary: 0 0% 98%;
-    --text-secondary: 0 0% 75%;
-    --text-muted: 0 0% 55%;
-    --text-accent: 0 85% 55%;
-    --text-light: 0 0% 90%;
-    --text-dark: 0 0% 12%;
-    --text-white: 0 0% 100%;
-    --text-hover: 0 0% 95%;
+    /* Anthracite Backgrounds (Sumi ink inspired) */
+    --background: 220 15% 8%;           /* Main anthracite */
+    --background-lighter: 215 12% 12%;  /* Lighter anthracite */
+    --background-card: 210 18% 11%;     /* Card backgrounds with subtle blue */
+    --background-hover: 208 20% 15%;    /* Hover states */
+    --background-secondary: 218 14% 10%; /* Secondary backgrounds */
+    --foreground: 210 20% 98%;          /* Warm white text */
 
-    --bg-primary: 0 0% 4%;
-    --bg-secondary: 0 0% 6%;
-    --bg-dark: 0 0% 3%;
+    /* Urushi Red (Japanese lacquer inspired) */
+    --interactive-primary: 355 70% 42%;    /* Main Urushi red */
+    --interactive-hover: 355 75% 48%;      /* Hover state */
+    --interactive-active: 355 65% 38%;     /* Active state */
+    --interactive-light: 355 60% 55%;      /* Light variant */
+    --interactive-dark: 355 80% 35%;       /* Dark variant */
+
+    /* Cyan Tech Accent (Modern complement) */
+    --accent-tech: 190 85% 55%;            /* Cyan for tech elements */
+    --accent-tech-hover: 190 90% 60%;      /* Hover variant */
+    --accent-tech-muted: 190 60% 45%;      /* Muted variant */
+
+    /* Borders (Subtle anthracite variations) */
+    --border: 220 12% 25%;                 /* Main borders */
+    --border-light: 215 15% 35%;           /* Light borders */
+    --border-dark: 225 10% 18%;            /* Dark borders */
+
+    /* System Colors (Enhanced for Japanese aesthetic) */
+    --solid-primary: 220 15% 8%;          /* Same as background */
+    --solid-secondary: 355 70% 42%;       /* Urushi red */
+    --solid-accent: 190 85% 55%;          /* Cyan tech */
+    --solid-success: 140 50% 45%;         /* Refined green */
+    --solid-warning: 38 85% 50%;          /* Refined amber */
+    --solid-error: 355 75% 55%;           /* Error using Urushi red variant */
+    --solid-info: 200 70% 50%;            /* Info blue */
+
+    /* Text Colors (Warmer and more sophisticated) */
+    --text-primary: 210 20% 98%;          /* Warm white */
+    --text-secondary: 215 15% 75%;        /* Warm grey */
+    --text-muted: 220 12% 55%;            /* Muted grey */
+    --text-accent: 355 70% 55%;           /* Urushi red for accents */
+    --text-tech: 190 80% 60%;             /* Cyan for tech content */
+    --text-light: 210 15% 90%;            /* Light variant */
+    --text-dark: 220 25% 12%;             /* Dark text */
+    --text-white: 0 0% 100%;              /* Pure white when needed */
+    --text-hover: 210 18% 95%;            /* Hover text */
+
+    /* Legacy aliases (for compatibility) */
+    --bg-primary: 220 15% 8%;
+    --bg-secondary: 215 12% 12%;
+    --bg-dark: 225 18% 6%;
   }
 
   .dark {
-    --background: 0 0% 3%;
-    --background-lighter: 0 0% 5%;
-    --background-hover: 0 0% 7%;
-    --foreground: 0 0% 99%;
-    --border: 0 0% 25%;
+    /* Enhanced dark mode (deeper Japanese aesthetics) */
+    --background: 225 18% 6%;              /* Deeper sumi */
+    --background-lighter: 220 15% 9%;      /* Slightly lighter */
+    --background-hover: 215 12% 12%;       /* Hover variant */
+    --foreground: 210 20% 99%;             /* Warmer white */
+    --border: 220 12% 28%;                 /* Visible borders */
     
-    --interactive-primary: 0 90% 50%;
-    --interactive-hover: 0 90% 60%;
-    --interactive-light: 0 90% 70%;
-    --solid-accent: 350 80% 45%;
+    --interactive-primary: 355 75% 45%;    /* Stronger Urushi in dark */
+    --interactive-hover: 355 80% 52%;      /* Brighter hover */
+    --interactive-light: 355 65% 60%;      /* Light variant */
+    --accent-tech: 190 90% 60%;            /* Brighter cyan in dark */
+    --solid-accent: 190 85% 50%;           /* Cyan accent */
   }
   
   body {
@@ -89,12 +105,28 @@
     @apply bg-gradient-to-r from-interactive-primary via-interactive-hover to-interactive-light bg-clip-text text-transparent;
   }
   
+  .gradient-tech {
+    @apply bg-gradient-to-r from-accent-tech via-accent-tech-hover to-accent-tech-muted bg-clip-text text-transparent;
+  }
+  
+  .gradient-japanese {
+    @apply bg-gradient-to-br from-interactive-primary via-accent-tech to-interactive-light bg-clip-text text-transparent;
+  }
+  
   .text-shadow-sm {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
   
   .shadow-floating {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(255, 0, 0, 0.1);
+    box-shadow: 
+      0 4px 20px hsl(var(--background) / 0.3), 
+      0 2px 4px hsl(var(--interactive-primary) / 0.1);
+  }
+  
+  .shadow-tech {
+    box-shadow: 
+      0 4px 20px hsl(var(--background) / 0.3), 
+      0 2px 4px hsl(var(--accent-tech) / 0.1);
   }
   
   .animate-fade-in-up {
@@ -141,7 +173,7 @@
   .torii-divider {
     position: relative;
     height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(0, 85%, 45%) 20%, hsl(0, 85%, 45%) 80%, transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--interactive-primary)) 20%, hsl(var(--interactive-primary)) 80%, transparent);
   }
   
   .torii-divider::before,
@@ -151,7 +183,7 @@
     top: -6px;
     width: 8px;
     height: 14px;
-    background-color: hsl(0, 85%, 45%);
+    background-color: hsl(var(--interactive-primary));
   }
   
   .torii-divider::before {

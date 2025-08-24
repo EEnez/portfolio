@@ -9,7 +9,7 @@ import MagneticButton from './MagneticButton';
 export default function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 md:pb-20">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-card" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-secondary" />
       
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-interactive-primary/20 via-transparent to-transparent" />
