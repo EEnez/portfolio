@@ -372,6 +372,39 @@
     gap: 2rem !important;
   }
   
+  /* Hero social icons mobile optimization */
+  .flex.gap-8 a {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 0.875rem !important;
+    touch-action: manipulation !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  .flex.gap-8 a:hover {
+    transform: none !important;
+  }
+  
+  .flex.gap-8 a:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s ease !important;
+  }
+  
+  /* Disable framer-motion animations */
+  .flex.gap-8 a[data-framer-motion] {
+    animation: none !important;
+  }
+  
+  /* Social links priority */
+  .flex.gap-8 a[href*="github"],
+  .flex.gap-8 a[href*="linkedin"],
+  .flex.gap-8 a[href*="x.com"] {
+    z-index: 30 !important;
+  }
+  
   /* Motion preferences */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
