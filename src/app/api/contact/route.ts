@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     const sanitizedName = escapeHtml(name.trim());
     const sanitizedEmail = escapeHtml(email.trim());
     const sanitizedSubject = escapeHtml(subject.trim());
-    const sanitizedMessage = escapeHtml(message.trim());
+    const sanitizedMessage = escapeHtml(message); // Don't trim message to preserve spaces
 
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev',
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
           
           <div style="background: white; padding: 20px; border-left: 4px solid #007bff; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Message</h3>
-            <p style="line-height: 1.6; color: #555; white-space: pre-wrap;">${sanitizedMessage}</p>
+            <div style="line-height: 1.6; color: #555; white-space: pre-wrap; font-family: monospace; background: #f8f9fa; padding: 15px; border-radius: 5px;">${sanitizedMessage}</div>
           </div>
           
           <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">

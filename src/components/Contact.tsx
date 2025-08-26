@@ -27,8 +27,21 @@ export default function Contact() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    const sanitizedValue = sanitizeInput(value);
-    setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    
+    // For message field, preserve all spaces and only remove dangerous content
+    if (name === 'message') {
+      const sanitizedValue = value
+        .replace(/<script[^>]*>.*?<\/script>/gi, '')
+        .replace(/javascript:/gi, '')
+        .replace(/vbscript:/gi, '')
+        .replace(/data:text\/html/gi, '')
+        .replace(/on\w+\s*=/gi, '');
+      setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    } else {
+      // For other fields, use normal sanitization
+      const sanitizedValue = sanitizeInput(value);
+      setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    }
     
     if (validationErrors[name as keyof ValidationErrors]) {
       setValidationErrors(prev => ({ ...prev, [name]: undefined }));
@@ -392,14 +405,22 @@ export default function Contact() {
                     validationErrors.message 
                       ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
                       : 'border-text-secondary/20 focus:border-interactive-primary focus:ring-interactive-primary/20'
-                  } bg-surface/30 backdrop-blur-sm focus:outline-none focus:ring-4 transition-all duration-300 placeholder:text-text-secondary/60 resize-none`}
+                  } bg-surface/30 backdrop-blur-sm focus:outline-none focus:ring-4 transition-all duration-300 placeholder:text-text-secondary/60 resize-none font-mono`}
                   placeholder="Votre message..."
+                  style={{ whiteSpace: 'pre-wrap' }}
                 ></textarea>
-                {validationErrors.message && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {validationErrors.message}
+                <div className="flex justify-between items-center mt-2">
+                  {validationErrors.message && (
+                    <p className="text-sm text-red-600 dark:text-red-400">
+                      {validationErrors.message}
+                    </p>
+                  )}
+                  <p className={`text-sm ml-auto ${
+                    formData.message.length > 1800 ? 'text-orange-500' : 'text-text-secondary/60'
+                  }`}>
+                    {formData.message.length}/2000 caractères
                   </p>
-                )}
+                </div>
               </div>
               
               <motion.button
