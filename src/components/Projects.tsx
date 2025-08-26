@@ -43,7 +43,7 @@ export default function Projects() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="pt-32 pb-24 relative overflow-hidden">
+    <section id="projects" className="pt-16 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background-secondary" />
       <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
       <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />

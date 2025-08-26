@@ -8,7 +8,7 @@ import MagneticButton from './MagneticButton';
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 md:pb-20">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-8 md:pb-12">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-secondary" />
       
       <div className="absolute inset-0 opacity-30">
@@ -68,10 +68,10 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <MagneticButton as="a" href="#contact" className="px-8 py-4 bg-gradient-to-r from-jade-electric to-jade-hover text-white rounded-md font-medium transition-all-smooth hover:shadow-lg hover:-translate-y-0.5 text-center w-full sm:w-auto text-base md:text-lg" intensity={0.4}>
+              <MagneticButton as="a" href="#contact" className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-jade-electric to-jade-hover text-white rounded-md font-medium transition-all-smooth hover:shadow-lg text-center w-full sm:w-auto text-base md:text-lg mb-3 sm:mb-0" intensity={0.4}>
                 Me Contacter
               </MagneticButton>
-              <MagneticButton as="a" href="#projects" className="btn-outline w-full sm:w-auto text-base md:text-lg px-8 py-4" intensity={0.3}>
+              <MagneticButton as="a" href="#projects" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-3 md:py-4 border border-interactive-primary text-interactive-primary rounded-md font-medium transition-all duration-300 hover:bg-interactive-primary/10 focus:outline-none focus:ring-2 focus:ring-interactive-primary focus:ring-offset-2 active:bg-interactive-primary/20 hover:border-interactive-hover text-center" intensity={0.3}>
                 Voir mes Projets
               </MagneticButton>
             </motion.div>

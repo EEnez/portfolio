@@ -73,7 +73,7 @@ export default function MagneticButton({
   return (
     <motion.div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`inline-block cursor-pointer ${isMobile ? 'relative' : ''}`}
+      className={`${isMobile ? 'block w-full' : 'inline-block'} cursor-pointer`}
       style={isMobile ? {} : { x, y, rotateX, rotateY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

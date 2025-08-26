@@ -85,7 +85,7 @@ export default function Header() {
                 transition={{ duration: 0.3 }}
               >
                 <span className="text-2xl font-black text-text-primary transition-colors duration-300 group-hover:text-interactive-primary">
-                  <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent group-hover:from-interactive-primary group-hover:to-jade-electric transition-all duration-300">E</span>nez
+                  <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent group-hover:from-interactive-primary group-hover:to-jade-electric transition-all duration-300">E</span><span className="hidden sm:inline">nez</span>
                 </span>
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-jade-electric to-clay-sunset group-hover:w-full transition-all duration-300" />
               </motion.div>
