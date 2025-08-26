@@ -119,7 +119,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="relative pb-12 md:pb-16"
+            className="relative pb-12 md:pb-16 profile-image-container"
           >
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-jade-electric/20 to-interactive-primary/20 rounded-2xl rotate-12 animate-pulse" />
             <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-clay-sunset/20 to-jade-electric/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }} />
