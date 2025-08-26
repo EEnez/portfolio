@@ -361,6 +361,19 @@
     animation: none !important;
   }
   
+  /* Project images mobile optimization */
+  img[src*="project"] {
+    min-height: 250px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: hsl(var(--background-card)) !important;
+  }
+  
+  /* Project grid mobile layout */
+  .grid.grid-cols-1 {
+    gap: 2rem !important;
+  }
+  
   /* Motion preferences */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
