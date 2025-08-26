@@ -8,7 +8,7 @@ import MagneticButton from './MagneticButton';
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-8 md:pb-12">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 md:pb-20">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-secondary" />
       
       <div className="absolute inset-0 opacity-30">
@@ -119,7 +119,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="relative pb-8 md:pb-12"
+            className="relative pb-12 md:pb-16"
           >
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-jade-electric/20 to-interactive-primary/20 rounded-2xl rotate-12 animate-pulse" />
             <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-clay-sunset/20 to-jade-electric/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }} />
