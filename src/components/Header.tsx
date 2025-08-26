@@ -31,6 +31,8 @@ export default function Header() {
       setIsScrolled(window.scrollY > 10);
     };
     
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -60,26 +62,33 @@ export default function Header() {
     <header 
       className={`fixed w-full top-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'backdrop-blur-lg bg-background/80 shadow-lg border-b border-interactive-primary/10' 
-          : 'bg-transparent'
+          ? 'backdrop-blur-xl bg-gradient-to-r from-background/90 via-background-lighter/85 to-background/90 shadow-2xl border-b border-interactive-primary/20' 
+          : 'bg-gradient-to-r from-transparent via-background/5 to-transparent'
       }`}
     >
               <motion.div
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-interactive-primary via-accent-tech to-interactive-primary origin-left"
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-jade-electric via-interactive-primary to-jade-electric origin-left"
           style={{ scaleX }}
         />
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="relative group"
           >
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-text-primary transition-colors duration-300 group-hover:text-interactive-primary">
-                <span className="text-interactive-primary group-hover:text-interactive-hover transition-colors duration-300">E</span>nez
-              </span>
+            <Link href="#home" className="flex items-center">
+              <motion.div
+                className="relative"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <span className="text-2xl font-black text-text-primary transition-colors duration-300 group-hover:text-interactive-primary">
+                  <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent group-hover:from-interactive-primary group-hover:to-jade-electric transition-all duration-300">E</span>nez
+                </span>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-jade-electric to-clay-sunset group-hover:w-full transition-all duration-300" />
+              </motion.div>
             </Link>
           </motion.div>
           
@@ -89,46 +98,64 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <ul className="flex space-x-2">
-              {navItems.map((item) => (
+            <ul className="flex space-x-1">
+              {navItems.map((item, index) => (
                 <li key={item.name}>
-                  <Link 
-                    href={item.href}
-                    className={`relative px-4 py-2 text-sm uppercase tracking-wider transition-all duration-300 font-medium hover:text-interactive-primary ${
-                      activeSection === item.href.substring(1)
-                        ? 'text-interactive-primary' 
-                        : 'text-text-secondary hover:text-text-primary'
-                    }`}
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
                   >
-                    {activeSection === item.href.substring(1) && (
-                      <motion.span 
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-interactive-primary"
-                        layoutId="activeSection"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                    {item.name}
-                  </Link>
+                    <Link 
+                      href={item.href}
+                      className={`relative px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 rounded-lg group overflow-hidden ${
+                        activeSection === item.href.substring(1)
+                          ? 'text-white bg-gradient-to-r from-interactive-primary to-blue-400 shadow-inner' 
+                          : 'text-text-secondary hover:text-text-primary hover:bg-surface/30 backdrop-blur-sm'
+                      }`}
+                    >
+                      
+                      {activeSection !== item.href.substring(1) && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-jade-electric/10 to-clay-sunset/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      )}
+                      
+                      {activeSection === item.href.substring(1) && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-interactive-primary to-blue-400 rounded-lg"
+                          layoutId="activeBackground"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                      
+                      <span className="relative z-10">{item.name}</span>
+                    </Link>
+                  </motion.div>
                 </li>
               ))}
             </ul>
           </motion.nav>
           
           <motion.button
-            className="md:hidden text-interactive-primary hover:text-interactive-hover transition-colors duration-300"
+            className="md:hidden p-3 rounded-xl bg-surface/30 backdrop-blur-sm border border-text-secondary/20 text-interactive-primary hover:text-white hover:bg-gradient-to-r hover:from-interactive-primary hover:to-blue-400 hover:border-transparent transition-all duration-300 group"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className="sr-only">Menu</span>
-            {isMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
+            <span className="sr-only">{isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}</span>
+            <motion.div
+              animate={{ rotate: isMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isMenuOpen ? (
+                <XMarkIcon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+              ) : (
+                <Bars3Icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+              )}
+            </motion.div>
           </motion.button>
         </div>
       </div>
@@ -136,28 +163,56 @@ export default function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden bg-background/95 backdrop-blur-lg border-t border-interactive-primary/20"
+            className="md:hidden bg-gradient-to-b from-background/95 to-background-secondary/95 backdrop-blur-xl border-t border-interactive-primary/30"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <nav className="container mx-auto px-4 py-4">
-              <ul className="space-y-2">
-                {navItems.map((item) => (
-                  <li key={item.name}>
+            <nav className="container mx-auto px-4 py-6">
+              <ul className="space-y-3">
+                {navItems.map((item, index) => (
+                  <motion.li 
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
                     <Link 
                       href={item.href}
-                      className={`block py-2 text-left w-full transition-all duration-300 hover:bg-interactive-primary/5 rounded-lg ${
+                      className={`block py-4 px-4 text-left w-full transition-all duration-300 rounded-xl relative overflow-hidden group ${
                         activeSection === item.href.substring(1)
-                          ? 'text-interactive-primary border-l-2 border-interactive-primary pl-3' 
-                          : 'text-text-secondary hover:text-text-primary pl-4'
+                          ? 'text-white bg-gradient-to-r from-interactive-primary to-blue-400 shadow-lg shadow-interactive-primary/30' 
+                          : 'text-text-secondary hover:text-text-primary hover:bg-surface/30 backdrop-blur-sm border border-text-secondary/10 hover:border-interactive-primary/30'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {item.name}
+                      
+                      {activeSection === item.href.substring(1) && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-interactive-primary to-blue-400"
+                          layoutId="mobileActiveBackground"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                      
+                      
+                      {activeSection !== item.href.substring(1) && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-jade-electric/10 to-clay-sunset/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      )}
+                      
+                      <span className="relative z-10 font-semibold flex items-center">
+                        <span className={`w-2 h-2 rounded-full mr-3 transition-colors duration-300 ${
+                          activeSection === item.href.substring(1) 
+                            ? 'bg-white' 
+                            : 'bg-interactive-primary group-hover:bg-interactive-primary'
+                        }`} />
+                        {item.name}
+                      </span>
                     </Link>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </nav>

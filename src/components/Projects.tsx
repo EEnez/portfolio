@@ -43,8 +43,12 @@ export default function Projects() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="py-20 md:py-24 bg-background-secondary">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="pt-32 pb-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-background-secondary" />
+      <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
+      <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -52,43 +56,82 @@ export default function Projects() {
           animate={inView ? "visible" : "hidden"}
           className="max-w-6xl mx-auto"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="inline-block border-b-4 border-interactive-primary pb-2">Mes Projets</span>
-            </h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Découvrez une sélection de mes projets récents. Chaque projet est une opportunité d&apos;apprendre et d&apos;appliquer de nouvelles technologies.
-            </p>
-          </div>
+          <motion.div variants={itemVariants} className="text-center mb-20">
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Mes{" "}
+              <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+                Projets
+              </span>
+            </motion.h2>
+            <motion.div 
+              className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full mb-6"
+              initial={{ width: 0 }}
+              animate={inView ? { width: 96 } : { width: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            />
+            <motion.p 
+              className="text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              Une sélection de mes créations récentes, chacune reflétant ma passion pour l&apos;innovation et l&apos;excellence technique.
+            </motion.p>
+          </motion.div>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map(category => (
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-16">
+            {categories.map((category, index) => (
               <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 relative overflow-hidden group ${
                   activeCategory === category.id
-                    ? 'bg-interactive-primary text-white shadow-lg shadow-interactive-primary/20'
-                    : 'bg-background-card text-text-secondary hover:bg-interactive-primary/10 hover:text-interactive-primary'
+                    ? 'bg-gradient-to-r from-jade-electric to-clay-sunset text-white shadow-lg shadow-jade-electric/30'
+                    : 'bg-surface/50 backdrop-blur-sm border border-text-secondary/20 text-text-secondary hover:text-text-primary hover:border-interactive-primary/40'
                 }`}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.9 + (index * 0.1) }}
               >
-                {category.name}
+                <span className="relative z-10">{category.name}</span>
+                {activeCategory !== category.id && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-jade-electric/10 to-clay-sunset/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                )}
               </motion.button>
             ))}
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map(project => (
-              <motion.div key={project.id} variants={itemVariants}>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            layout
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div 
+                key={project.id} 
+                variants={itemVariants}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 1.2 + (index * 0.1),
+                  ease: "easeOut"
+                }}
+                layout
+              >
                 <ProjectCard 
                   project={project} 
                   onImageClick={handleImageClick}
                 />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 

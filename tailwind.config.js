@@ -27,6 +27,10 @@ module.exports = {
           hover: "hsl(var(--background-hover))",
           secondary: "hsl(var(--background-secondary))",
         },
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          secondary: "hsl(var(--surface-secondary))",
+        },
         foreground: "hsl(var(--foreground))",
         
         interactive: {
@@ -41,6 +45,18 @@ module.exports = {
           tech: "hsl(var(--accent-tech))",
           "tech-hover": "hsl(var(--accent-tech-hover))",
           "tech-muted": "hsl(var(--accent-tech-muted))",
+        },
+
+        // 2026 Future Colors
+        jade: {
+          electric: "hsl(var(--electric-jade))",
+          hover: "hsl(var(--electric-jade-hover))",
+          muted: "hsl(var(--electric-jade-muted))",
+        },
+        clay: {
+          sunset: "hsl(var(--sunset-clay))",
+          hover: "hsl(var(--sunset-clay-hover))",
+          muted: "hsl(var(--sunset-clay-muted))",
         },
         
         solid: {
@@ -78,6 +94,7 @@ module.exports = {
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.5s ease-in-out",
+        "wiggle": "wiggle 0.5s ease-in-out",
       },
       keyframes: {
         fadeIn: {
@@ -87,6 +104,10 @@ module.exports = {
         slideUp: {
           "0%": { transform: "translateY(20px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
         },
       },
       boxShadow: {

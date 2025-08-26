@@ -117,99 +117,187 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-24">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          <span className="inline-block border-b-4 border-primary pb-2">Me Contacter</span>
-        </h2>
-        
-        <p className="text-lg text-center max-w-3xl mx-auto mb-12 px-4">
-          Vous avez un projet en tête ou une question ? N&apos;hésitez pas à me contacter. Je vous répondrai dans les plus brefs délais.
-        </p>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-          
-          <motion.div
-            ref={ref}
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="lg:col-span-1 space-y-4 md:space-y-6"
+    <section id="contact" className="pt-32 pb-24 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background-secondary to-background" />
+      <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '18s' }} />
+      <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '14s', animationDelay: '5s' }} />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Title */}
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="text-center mb-20"
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
+            variants={itemVariants}
           >
-            {contactInfo.map((info) => (
+            Me{" "}
+            <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+              Contacter
+            </span>
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full mb-6"
+            variants={itemVariants}
+          />
+          <motion.p 
+            className="text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed"
+            variants={itemVariants}
+          >
+            Vous avez un projet en tête ? Discutons-en ! Je serais ravi de découvrir vos idées et de voir comment nous pouvons collaborer.
+          </motion.p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          
+          {/* Contact Info Sidebar */}
+          <motion.div
+            variants={containerVariants}
+            className="lg:col-span-1 space-y-6"
+          >
+            {contactInfo.map((info, index) => (
               <motion.a
                 key={info.title}
                 href={info.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
-                className="flex items-start p-6 bg-white dark:bg-dark rounded-xl shadow-subtle hover:shadow-lg transition-shadow"
+                className="group bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-6 hover:border-interactive-primary/30 transition-all duration-500 relative overflow-hidden block"
+                whileHover={{ y: -5, scale: 1.02 }}
+                style={{ cursor: 'pointer' }}
               >
-                <div className="p-3 bg-border-light text-primary rounded-full mr-4">
-                  {info.icon}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1">{info.title}</h3>
-                  <p className="text-secondary">{info.content}</p>
+                {/* Floating decoration */}
+                <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-20 animate-pulse ${
+                  index === 0 ? 'bg-gradient-to-r from-blue-500 to-cyan-400' :
+                  index === 1 ? 'bg-gradient-to-r from-green-500 to-emerald-400' :
+                  'bg-gradient-to-r from-purple-500 to-pink-400'
+                }`} />
+                
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-interactive-primary/5 to-green-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                
+                <div className="relative z-10 flex items-start space-x-4">
+                  <motion.div 
+                    className={`p-4 rounded-2xl ${
+                      index === 0 ? 'bg-gradient-to-r from-blue-500/10 to-cyan-400/10 border border-blue-400/20' :
+                      index === 1 ? 'bg-gradient-to-r from-green-500/10 to-emerald-400/10 border border-green-400/20' :
+                      'bg-gradient-to-r from-clay-sunset/10 to-clay-hover/10 border border-clay-sunset/20'
+                    }`}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                  >
+                    <div className={
+                      index === 0 ? 'text-blue-400' :
+                      index === 1 ? 'text-green-400' :
+                      'text-clay-sunset'
+                    }>
+                      {info.icon}
+                    </div>
+                  </motion.div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg mb-2 text-text-primary group-hover:text-interactive-primary transition-colors">
+                      {info.title}
+                    </h3>
+                    <p className="text-text-secondary text-sm leading-relaxed group-hover:text-text-primary transition-colors">
+                      {info.content}
+                    </p>
+                  </div>
                 </div>
               </motion.a>
             ))}
             
+            {/* Social Media Card */}
             <motion.div
               variants={itemVariants}
-              className="p-6 bg-white dark:bg-dark rounded-xl shadow-subtle mt-8"
+              className="bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-6 relative overflow-hidden"
             >
-              <h3 className="font-semibold text-lg mb-4">Suivez-moi</h3>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-jade-electric to-clay-sunset rounded-full opacity-20 animate-pulse" />
+              
+              <h3 className="font-bold text-lg mb-6 text-text-primary">Suivez-moi</h3>
               <div className="flex space-x-4">
-                <a
+                <motion.a
                   href="https://github.com/EEnez"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-border-light dark:bg-border rounded-full hover:bg-primary/10 hover:text-primary transition-colors group"
+                  className="p-4 bg-gradient-to-r from-gray-800/20 to-gray-900/20 border border-gray-600/20 rounded-2xl hover:from-gray-700/30 hover:to-gray-800/30 hover:border-gray-500/30 transition-all duration-300 group"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <GithubIcon />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="https://www.linkedin.com/in/enez-gubeljic-76313229b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-border-light dark:bg-border rounded-full hover:bg-primary/10 hover:text-primary transition-colors group"
+                  className="p-4 bg-gradient-to-r from-blue-600/20 to-blue-700/20 border border-blue-500/20 rounded-2xl hover:from-blue-500/30 hover:to-blue-600/30 hover:border-blue-400/30 transition-all duration-300 group"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <LinkedInIcon />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="https://x.com/Enez_Gubeljic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-border-light dark:bg-border rounded-full hover:bg-primary/10 hover:text-primary transition-colors group"
+                  className="p-4 bg-gradient-to-r from-gray-900/20 to-black/20 border border-gray-700/20 rounded-2xl hover:from-gray-800/30 hover:to-gray-900/30 hover:border-gray-600/30 transition-all duration-300 group"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <TwitterIcon />
-                </a>
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>
           
           
+          {/* Contact Form */}
           <motion.div
             variants={itemVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="lg:col-span-2 bg-white dark:bg-dark rounded-xl shadow-subtle p-6 md:p-8"
+            className="lg:col-span-2 bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-8 md:p-10 relative overflow-hidden"
           >
+            {/* Floating decoration */}
+            <div className="absolute -top-2 -left-2 w-6 h-6 bg-gradient-to-r from-jade-electric to-clay-sunset rounded-full opacity-20 animate-pulse" />
+            
+            {/* Success Message */}
             {submitSuccess ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 p-4 rounded-lg mb-6"
+                initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                className="bg-gradient-to-r from-green-500/10 to-emerald-400/10 border border-green-400/20 text-green-400 p-6 rounded-2xl mb-8 relative overflow-hidden"
               >
-                Votre message a été envoyé avec succès ! Je vous répondrai dès que possible.
+                <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-emerald-400/5" />
+                <div className="relative z-10 flex items-center space-x-3">
+                  <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="font-semibold">Message envoyé avec succès ! Je vous répondrai rapidement.</p>
+                </div>
               </motion.div>
             ) : null}
             
+            {/* Error Message */}
             {submitError ? (
-              <div className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 p-4 rounded-lg mb-6">
-                {submitError}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                className="bg-gradient-to-r from-red-500/10 to-pink-400/10 border border-red-400/20 text-red-400 p-6 rounded-2xl mb-8 relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-pink-400/5" />
+                <div className="relative z-10 flex items-center space-x-3">
+                  <div className="w-6 h-6 bg-red-400 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="font-semibold">{submitError}</p>
+                </div>
+              </motion.div>
             ) : null}
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -225,11 +313,11 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border ${
+                    className={`w-full px-4 py-4 rounded-xl border-2 ${
                       validationErrors.name 
-                        ? 'border-red-500 focus:ring-red-500' 
-                        : 'border-border dark:border-border-dark focus:ring-primary'
-                    } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
+                        ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                        : 'border-text-secondary/20 focus:border-interactive-primary focus:ring-interactive-primary/20'
+                    } bg-surface/30 backdrop-blur-sm focus:outline-none focus:ring-4 transition-all duration-300 placeholder:text-text-secondary/60`}
                     placeholder="Enez Gubeljic"
                   />
                   {validationErrors.name && (
@@ -249,11 +337,11 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border ${
+                    className={`w-full px-4 py-4 rounded-xl border-2 ${
                       validationErrors.email 
-                        ? 'border-red-500 focus:ring-red-500' 
-                        : 'border-border dark:border-border-dark focus:ring-primary'
-                    } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
+                        ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                        : 'border-text-secondary/20 focus:border-interactive-primary focus:ring-interactive-primary/20'
+                    } bg-surface/30 backdrop-blur-sm focus:outline-none focus:ring-4 transition-all duration-300 placeholder:text-text-secondary/60`}
                     placeholder="enezgubeljic@gmail.com"
                   />
                   {validationErrors.email && (
@@ -275,11 +363,11 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className={`w-full px-4 py-3 rounded-lg border ${
+                  className={`w-full px-4 py-4 rounded-xl border-2 ${
                     validationErrors.subject 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-border dark:border-border-dark focus:ring-primary'
-                  } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
+                      ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                      : 'border-text-secondary/20 focus:border-interactive-primary focus:ring-interactive-primary/20'
+                  } bg-surface/30 backdrop-blur-sm focus:outline-none focus:ring-4 transition-all duration-300 placeholder:text-text-secondary/60`}
                   placeholder="Sujet de votre message"
                 />
                 {validationErrors.subject && (
@@ -300,11 +388,11 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className={`w-full px-4 py-3 rounded-lg border ${
+                  className={`w-full px-4 py-4 rounded-xl border-2 ${
                     validationErrors.message 
-                      ? 'border-red-500 focus:ring-red-500' 
-                      : 'border-border dark:border-border-dark focus:ring-primary'
-                  } bg-white dark:bg-dark focus:outline-none focus:ring-2`}
+                      ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                      : 'border-text-secondary/20 focus:border-interactive-primary focus:ring-interactive-primary/20'
+                  } bg-surface/30 backdrop-blur-sm focus:outline-none focus:ring-4 transition-all duration-300 placeholder:text-text-secondary/60 resize-none`}
                   placeholder="Votre message..."
                 ></textarea>
                 {validationErrors.message && (
@@ -317,13 +405,37 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-6 py-3 bg-primary text-white rounded-md font-medium transition-colors ${
-                  isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-interactive-hover'
+                className={`w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 relative overflow-hidden ${
+                  isSubmitting 
+                    ? 'bg-text-secondary/20 text-text-secondary cursor-not-allowed' 
+                    : 'bg-gradient-to-r from-jade-electric to-jade-hover hover:from-jade-hover hover:to-jade-electric text-white hover:shadow-lg hover:shadow-jade-electric/30'
                 }`}
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
               >
-                {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                <span className="relative z-10 flex items-center justify-center gap-3">
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                      Envoyer le message
+                    </>
+                  )}
+                </span>
+                
+                {!isSubmitting && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                )}
               </motion.button>
             </form>
           </motion.div>

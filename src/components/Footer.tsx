@@ -1,96 +1,227 @@
 "use client";
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { GithubIcon, LinkedInIcon, TwitterIcon } from './SocialIcons';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+  
   return (
-    <footer className="bg-dark text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <Link href="#home" className="text-2xl font-bold text-primary">
-              Portfolio
-            </Link>
-            <p className="mt-2 text-muted max-w-md">
-              CODE &amp; UX
+    <footer className="relative overflow-hidden bg-gradient-to-b from-background-secondary to-background">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10 py-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12"
+        >
+          {/* Brand Section */}
+          <motion.div variants={itemVariants} className="md:col-span-1">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Link href="#home" className="group">
+                <h3 className="text-3xl font-black mb-4">
+                  <span className="bg-gradient-to-r from-jade-electric to-clay-sunset bg-clip-text text-transparent">
+                    Enez
+                  </span>
+                </h3>
+              </Link>
+            </motion.div>
+            <p className="text-text-secondary leading-relaxed mb-6">
+              Développeur Full Stack & Designer UI/UX basé à Bruxelles. Je transforme les idées en applications web modernes et fonctionnelles.
             </p>
-          </div>
+            <div className="w-16 h-1 bg-gradient-to-r from-jade-electric to-clay-sunset rounded-full" />
+          </motion.div>
           
-          <div className="flex flex-col md:flex-row gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#home" className="text-muted hover:text-primary transition-colors">
-                    Accueil
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#about" className="text-muted hover:text-primary transition-colors">
-                    À propos
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#projects" className="text-muted hover:text-primary transition-colors">
-                    Projets
-                  </Link>
-                </li>
-              </ul>
+          {/* Navigation Section */}
+          <motion.div variants={itemVariants}>
+            <h4 className="text-lg font-bold mb-6 text-text-primary">Navigation</h4>
+            <ul className="space-y-4">
+              {['Accueil', 'À propos', 'Compétences', 'Projets', 'Contact'].map((item) => {
+                const href = item === 'Accueil' ? '#home' : 
+                           item === 'À propos' ? '#about' :
+                           item === 'Compétences' ? '#skills' :
+                           item === 'Projets' ? '#projects' : '#contact';
+                return (
+                  <li key={item}>
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Link 
+                        href={href} 
+                        className="text-text-secondary hover:text-interactive-primary transition-all duration-300 group flex items-center"
+                      >
+                        <span className="w-2 h-2 bg-text-secondary/40 rounded-full mr-3 group-hover:bg-interactive-primary transition-colors duration-300" />
+                        {item}
+                      </Link>
+                    </motion.div>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
+
+          {/* Contact Section */}
+          <motion.div variants={itemVariants}>
+            <h4 className="text-lg font-bold mb-6 text-text-primary">Contact</h4>
+            <div className="space-y-4">
+              <motion.a
+                href="mailto:enezgubeljic@gmail.com"
+                className="group block"
+                whileHover={{ x: 5 }}
+              >
+                <div className="flex items-center space-x-3 text-text-secondary group-hover:text-interactive-primary transition-colors duration-300">
+                  <div className="w-8 h-8 bg-interactive-primary/10 rounded-lg flex items-center justify-center group-hover:bg-interactive-primary/20">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">enezgubeljic@gmail.com</span>
+                </div>
+              </motion.a>
+              
+              <motion.a
+                href="tel:+32486081369"
+                className="group block"
+                whileHover={{ x: 5 }}
+              >
+                <div className="flex items-center space-x-3 text-text-secondary group-hover:text-interactive-primary transition-colors duration-300">
+                  <div className="w-8 h-8 bg-green-400/10 rounded-lg flex items-center justify-center group-hover:bg-green-400/20">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">+32 486 08 13 69</span>
+                </div>
+              </motion.a>
+              
+              <motion.a
+                href="https://maps.google.com/?q=Bruxelles,Belgique"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block"
+                whileHover={{ x: 5 }}
+              >
+                <div className="flex items-center space-x-3 text-text-secondary group-hover:text-interactive-primary transition-colors duration-300">
+                  <div className="w-8 h-8 bg-purple-400/10 rounded-lg flex items-center justify-center group-hover:bg-purple-400/20">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">Bruxelles, Belgique</span>
+                </div>
+              </motion.a>
             </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2">
-                <li className="text-muted">
-                  <span className="text-primary">Email:</span> enezgubeljic@gmail.com
-                </li>
-                <li className="text-muted">
-                  <span className="text-primary">Téléphone:</span> +32 486 08 13 69
-                </li>
-                <li className="text-muted">
-                  <span className="text-primary">Adresse:</span> Bruxelles, Belgique
-                </li>
-              </ul>
+          </motion.div>
+          
+          {/* Social Section */}
+          <motion.div variants={itemVariants}>
+            <h4 className="text-lg font-bold mb-6 text-text-primary">Réseaux</h4>
+            <div className="space-y-4">
+              <motion.a
+                href="https://github.com/EEnez"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-3 p-3 bg-gradient-to-r from-gray-800/20 to-gray-900/20 border border-gray-600/20 rounded-xl hover:from-gray-700/30 hover:to-gray-800/30 hover:border-gray-500/30 transition-all duration-300"
+                whileHover={{ scale: 1.02, x: 5 }}
+                style={{ cursor: 'pointer' }}
+              >
+                <GithubIcon />
+                <span className="text-sm text-text-secondary group-hover:text-text-primary">GitHub</span>
+              </motion.a>
+              
+              <motion.a
+                href="https://www.linkedin.com/in/enez-gubeljic-76313229b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-600/20 to-blue-700/20 border border-blue-500/20 rounded-xl hover:from-blue-500/30 hover:to-blue-600/30 hover:border-blue-400/30 transition-all duration-300"
+                whileHover={{ scale: 1.02, x: 5 }}
+                style={{ cursor: 'pointer' }}
+              >
+                <LinkedInIcon />
+                <span className="text-sm text-text-secondary group-hover:text-text-primary">LinkedIn</span>
+              </motion.a>
+              
+              <motion.a
+                href="https://x.com/Enez_Gubeljic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-3 p-3 bg-gradient-to-r from-gray-900/20 to-black/20 border border-gray-700/20 rounded-xl hover:from-gray-800/30 hover:to-gray-900/30 hover:border-gray-600/30 transition-all duration-300"
+                whileHover={{ scale: 1.02, x: 5 }}
+                style={{ cursor: 'pointer' }}
+              >
+                <TwitterIcon />
+                <span className="text-sm text-text-secondary group-hover:text-text-primary">Twitter</span>
+              </motion.a>
             </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Réseaux sociaux</h3>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/EEnez"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-primary transition-colors group"
-                >
-                  <GithubIcon />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/enez-gubeljic-76313229b"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-primary transition-colors group"
-                >
-                  <LinkedInIcon />
-                </a>
-                <a
-                  href="https://x.com/Enez_Gubeljic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-primary transition-colors group"
-                >
-                  <TwitterIcon />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
-        <div className="border-t border-border mt-12 pt-8 text-center text-muted">
-          <p>© {currentYear} Enez Gubeljic. Tous droits réservés.</p>
-        </div>
+        {/* Copyright Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 pt-8 border-t border-text-secondary/20 relative"
+        >
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-interactive-primary/50 to-transparent" />
+          
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <motion.p 
+              className="text-text-secondary text-sm"
+              whileHover={{ scale: 1.02 }}
+            >
+              © {currentYear} <span className="text-interactive-primary font-semibold">Enez Gubeljic</span>. Tous droits réservés.
+            </motion.p>
+            
+            <motion.div
+              className="flex items-center space-x-4 text-xs text-text-secondary/70"
+              whileHover={{ scale: 1.02 }}
+            >
+              <span className="flex items-center space-x-1">
+                <span>Built with Next.js & Tailwind</span>
+                <motion.span
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  ⚡
+                </motion.span>
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );

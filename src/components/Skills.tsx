@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { skillCategories, learningSkills } from '@/data/skills';
 
 export default function Skills() {
   const [ref, inView] = useInView({
@@ -15,206 +14,153 @@ export default function Skills() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
+        delayChildren: 0.1
       },
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const skillVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
-
-  const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
   };
 
+  const skillCategories = [
+    {
+      name: "Frontend",
+      icon: "⚛️",
+      color: "from-jade-electric to-jade-hover",
+      skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"]
+    },
+    {
+      name: "Backend", 
+      icon: "⚙️",
+      color: "from-interactive-primary to-interactive-hover",
+      skills: ["PHP", "Symfony", "MySQL", "REST APIs", "Node.js"]
+    },
+    {
+      name: "Design",
+      icon: "🎨", 
+      color: "from-clay-sunset to-clay-hover",
+      skills: ["Figma", "Photoshop", "UI/UX", "Design Systems", "Prototyping"]
+    },
+    {
+      name: "Tools",
+      icon: "🛠️",
+      color: "from-green-500 to-emerald-400", 
+      skills: ["Git", "Docker", "VS Code", "Webpack", "npm/yarn"]
+    }
+  ];
+
   return (
-    <section id="skills" className="py-20 bg-background-secondary">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="pt-32 pb-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background-secondary to-background" />
+      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '3s' }} />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="max-w-7xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
-          <motion.div
-            variants={cardVariants}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-interactive-primary">Mes</span> Compétences
-            </h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Un aperçu de mes compétences techniques et outils maîtrisés 
-              à travers mes projets personnels et mon expérience pratique.
-            </p>
+          <motion.div variants={itemVariants} className="text-center mb-20">
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Mes{" "}
+              <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+                Compétences
+              </span>
+            </motion.h2>
+            <motion.div 
+              className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full"
+              initial={{ width: 0 }}
+              animate={inView ? { width: 96 } : { width: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            />
           </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
-            {skillCategories.map((category) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {skillCategories.map((category, index) => (
               <motion.div
-                key={category.id}
-                variants={cardVariants}
-                className="bg-background-card rounded-xl p-8 shadow-card hover:shadow-floating transition-all duration-300 border border-border-subtle"
+                key={category.name}
+                variants={itemVariants}
+                className="group relative"
               >
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-interactive-primary mb-2">
-                    {category.name}
-                  </h3>
-                  {category.description && (
-                    <p className="text-sm text-text-secondary mb-4">
-                      {category.description}
-                    </p>
-                  )}
-                  <div className="w-12 h-1 bg-interactive-primary rounded-full"></div>
-                </div>
-
-                <div className="space-y-4">
-                  {category.skills.map((skill) => (
-                    <motion.div
-                      key={skill.name}
-                      variants={skillVariants}
-                      className="group"
+                <motion.div 
+                  className="bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-8 relative overflow-hidden h-full"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  
+                  <div className="relative z-10 text-center">
+                    <motion.div 
+                      className="text-4xl mb-4"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <div className="flex items-start justify-between mb-2">
-                        <div className="flex-1">
-                          <div className="flex items-start gap-3 mb-1">
-                            <h4 className={`font-medium transition-colors ${
-                              skill.highlighted 
-                                ? (skill.techSkill ? 'text-accent-tech' : 'text-interactive-primary')
-                                : (skill.techSkill ? 'text-text-primary group-hover:text-accent-tech' : 'text-text-primary group-hover:text-interactive-primary')
-                            }`}>
-                              {skill.name}
-                            </h4>
-                            {skill.highlighted && (
-                              <motion.div
-                                variants={badgeVariants}
-                                className={`w-2 h-2 rounded-full flex-shrink-0 mt-2 ${
-                                  skill.techSkill ? 'bg-accent-tech' : 'bg-interactive-primary'
-                                }`}
-                              />
-                            )}
-                          </div>
-                          {skill.description && (
-                            <p className="text-sm text-text-secondary leading-relaxed">
-                              {skill.description}
-                            </p>
-                          )}
-                        </div>
-                      </div>
+                      {category.icon}
                     </motion.div>
-                  ))}
-                </div>
+                    
+                    <h3 className={`text-xl font-bold mb-6 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
+                      {category.name}
+                    </h3>
+                    
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {category.skills.map((skill, skillIndex) => (
+                        <motion.span
+                          key={skill}
+                          className="px-3 py-1 text-xs font-medium bg-text-secondary/10 border border-text-secondary/20 rounded-full text-text-secondary hover:text-text-primary hover:border-text-secondary/40 transition-all duration-300"
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                          transition={{ 
+                            duration: 0.4, 
+                            delay: 0.8 + (index * 0.1) + (skillIndex * 0.05),
+                            ease: "easeOut"
+                          }}
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className={`absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r ${category.color} rounded-full opacity-20 animate-pulse`} />
+                </motion.div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
 
-          
-          <motion.div
-            variants={cardVariants}
-            className="mt-16"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              
-              <div className="bg-background-card rounded-xl p-8 shadow-card border border-border-subtle">
-                <h3 className="text-xl font-semibold mb-4 text-interactive-primary">
-                  Mon Processus Design-to-Code
-                </h3>
-                <p className="text-text-secondary mb-6">
-                  Ma double expertise design/développement me permet de créer des expériences utilisateur 
-                  complètes, de la conception à l&apos;implémentation.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-interactive-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-xs font-bold text-interactive-primary">1</span>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-text-primary">Design & Prototypage</h4>
-                      <p className="text-sm text-text-secondary">Photoshop, InDesign, Figma pour créer des maquettes et prototypes</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-interactive-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-xs font-bold text-interactive-primary">2</span>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-text-primary">Développement Frontend</h4>
-                      <p className="text-sm text-text-secondary">Transformation pixel-perfect en code React/TypeScript</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-interactive-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-xs font-bold text-interactive-primary">3</span>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-text-primary">Backend Integration</h4>
-                      <p className="text-sm text-text-secondary">APIs robustes avec Symfony pour une expérience complète</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              
-              <div className="bg-background-card rounded-xl p-8 shadow-card border border-border-subtle">
-                <h3 className="text-xl font-semibold mb-4 text-interactive-primary">
-                  En apprentissage continu
-                </h3>
-                <p className="text-text-secondary mb-6">
-                  Toujours curieux d&apos;apprendre de nouvelles technologies pour rester à la pointe 
-                  des tendances du développement web et du design.
-                </p>
-                <div className="space-y-3">
-                  {learningSkills.map((skill) => (
-                    <motion.div
-                      key={skill.name}
-                      variants={skillVariants}
-                      className="flex items-start space-x-3 group"
-                    >
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0 mt-2"></div>
-                      <div>
-                        <h4 className="font-medium text-text-primary group-hover:text-interactive-primary transition-colors">
-                          {skill.name}
-                        </h4>
-                        <p className="text-sm text-text-secondary">
-                          {skill.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <motion.div variants={itemVariants} className="text-center">
+            <motion.div 
+              className="bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-8 max-w-2xl mx-auto"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-jade-electric to-clay-sunset bg-clip-text text-transparent">
+                🚀 Toujours en évolution
+              </h3>
+              <p className="text-text-secondary leading-relaxed">
+                Passionné par l&apos;apprentissage continu, j&apos;explore constamment de nouvelles technologies 
+                et pratiques pour rester à la pointe du développement moderne.
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

@@ -26,7 +26,6 @@ export const projects: Project[] = [
     description: 'Application pour gérer une collection de jeux vidéo. Dashboard interactif, recherche avancée, statistiques et authentification sécurisée avec architecture REST API.',
     image: '/images/project1.png',
     tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS", "JWT"],
-    demoLink: 'https://github.com/EEnez/levelist',
     codeLink: 'https://github.com/EEnez/levelist',
     category: 'web',
     featured: true
@@ -37,7 +36,6 @@ export const projects: Project[] = [
     description: 'Plateforme moderne de gestion de contenu avec interface d\'administration intuitive. Système complet de création et gestion d\'articles avec authentification et gestion des rôles.',
     image: '/images/project2.png',
     tags: ["Symfony", "MySQL", "Bootstrap", "Twig", "Doctrine"],
-    demoLink: 'https://github.com/EEnez/sym64ENEZ',
     codeLink: 'https://github.com/EEnez/sym64ENEZ',
     category: 'web',
     featured: true
@@ -48,6 +46,7 @@ export const projects: Project[] = [
     description: 'Redesign complet du site du centre de formation CF2M. Design moderne et responsive avec optimisation UX pour améliorer l\'engagement et les conversions.',
     image: '/images/project3.png',
     tags: ["Figma", "WordPress", "HTML", "CSS", "JavaScript"],
+    codeLink: 'https://github.com/EEnez/cf2m-redesign',
     category: 'web',
     featured: true
   }

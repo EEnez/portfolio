@@ -49,7 +49,7 @@ export default function ImageModal({ isOpen, onClose, project }: ImageModalProps
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.7, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative bg-background-card rounded-2xl overflow-hidden shadow-2xl max-w-4xl max-h-[90vh] w-full"
+            className="relative bg-gradient-to-br from-surface/95 to-surface-secondary/95 backdrop-blur-xl border border-text-secondary/20 rounded-2xl overflow-hidden shadow-2xl max-w-4xl max-h-[90vh] w-full"
             onClick={(e) => e.stopPropagation()}
           >
             <button
