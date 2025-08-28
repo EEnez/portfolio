@@ -67,7 +67,7 @@ export default function Header() {
       }`}
     >
               <motion.div
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-jade-electric via-interactive-primary to-jade-electric origin-left"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-interactive-primary origin-left"
           style={{ scaleX }}
         />
       <div className="container mx-auto px-4">
@@ -85,9 +85,9 @@ export default function Header() {
                 transition={{ duration: 0.3 }}
               >
                 <span className="text-2xl font-black text-text-primary transition-colors duration-300 group-hover:text-interactive-primary">
-                  <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent group-hover:from-interactive-primary group-hover:to-jade-electric transition-all duration-300">E</span><span className="hidden sm:inline">nez</span>
+                  <span className="text-interactive-primary group-hover:text-jade-electric transition-all duration-300">E</span><span className="hidden sm:inline">nez</span>
                 </span>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-jade-electric to-clay-sunset group-hover:w-full transition-all duration-300" />
+                                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-jade-electric group-hover:w-full transition-all duration-300" />
               </motion.div>
             </Link>
           </motion.div>
@@ -110,7 +110,7 @@ export default function Header() {
                       href={item.href}
                       className={`relative px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 rounded-lg group overflow-hidden ${
                         activeSection === item.href.substring(1)
-                          ? 'text-white bg-gradient-to-r from-interactive-primary to-blue-400 shadow-inner' 
+                          ? 'text-white bg-interactive-primary shadow-inner' 
                           : 'text-text-secondary hover:text-text-primary hover:bg-surface/30 backdrop-blur-sm'
                       }`}
                     >
@@ -121,7 +121,7 @@ export default function Header() {
                       
                       {activeSection === item.href.substring(1) && (
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-interactive-primary to-blue-400 rounded-lg"
+                          className="absolute inset-0 bg-interactive-primary rounded-lg"
                           layoutId="activeBackground"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -182,7 +182,7 @@ export default function Header() {
                       href={item.href}
                       className={`block py-4 px-4 text-left w-full transition-all duration-300 rounded-xl relative overflow-hidden group ${
                         activeSection === item.href.substring(1)
-                          ? 'text-white bg-gradient-to-r from-interactive-primary to-blue-400 shadow-lg shadow-interactive-primary/30' 
+                          ? 'text-white bg-interactive-primary shadow-lg shadow-interactive-primary/30' 
                           : 'text-text-secondary hover:text-text-primary hover:bg-surface/30 backdrop-blur-sm border border-text-secondary/10 hover:border-interactive-primary/30'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
@@ -190,7 +190,7 @@ export default function Header() {
                       
                       {activeSection === item.href.substring(1) && (
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-interactive-primary to-blue-400"
+                          className="absolute inset-0 bg-interactive-primary"
                           layoutId="mobileActiveBackground"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}

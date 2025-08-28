@@ -47,7 +47,6 @@ module.exports = {
           "tech-muted": "hsl(var(--accent-tech-muted))",
         },
 
-        // 2026 Future Colors
         jade: {
           electric: "hsl(var(--electric-jade))",
           hover: "hsl(var(--electric-jade-hover))",
@@ -57,6 +56,11 @@ module.exports = {
           sunset: "hsl(var(--sunset-clay))",
           hover: "hsl(var(--sunset-clay-hover))",
           muted: "hsl(var(--sunset-clay-muted))",
+        },
+        gold: {
+          rose: "hsl(var(--gold-rose))",
+          "rose-hover": "hsl(var(--gold-rose-hover))",
+          "rose-muted": "hsl(var(--gold-rose-muted))",
         },
         
         solid: {

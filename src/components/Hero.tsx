@@ -34,7 +34,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+              <span className="text-interactive-primary">
                 Enez
               </span>{" "}
               <span className="block lg:inline">Gubeljic</span>
@@ -68,7 +68,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <MagneticButton as="a" href="#contact" className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-jade-electric to-jade-hover text-white rounded-md font-medium transition-all-smooth hover:shadow-lg text-center w-full sm:w-auto text-base md:text-lg mb-3 sm:mb-0" intensity={0.4}>
+              <MagneticButton as="a" href="#contact" className="px-6 md:px-8 py-3 md:py-4 bg-interactive-primary text-white rounded-md font-medium transition-all-smooth hover:shadow-lg text-center w-full sm:w-auto text-base md:text-lg mb-3 sm:mb-0" intensity={0.4}>
                 Me Contacter
               </MagneticButton>
               <MagneticButton as="a" href="#projects" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-3 md:py-4 border border-interactive-primary text-interactive-primary rounded-md font-medium transition-all duration-300 hover:bg-interactive-primary/10 focus:outline-none focus:ring-2 focus:ring-interactive-primary focus:ring-offset-2 active:bg-interactive-primary/20 hover:border-interactive-hover text-center" intensity={0.3}>
@@ -86,7 +86,7 @@ export default function Hero() {
                 href="https://github.com/EEnez" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group p-3 rounded-full bg-gradient-to-r from-gray-800 to-gray-900 hover:from-jade-electric hover:to-jade-hover transition-all duration-300 transform hover:scale-110"
+                className="group p-3 rounded-full bg-gray-800 hover:bg-jade-electric transition-all duration-300 transform hover:scale-110"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -96,7 +96,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/enez-gubeljic-76313229b" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group p-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-jade-electric hover:to-jade-hover transition-all duration-300 transform hover:scale-110"
+                className="group p-3 rounded-full bg-blue-600 hover:bg-jade-electric transition-all duration-300 transform hover:scale-110"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -106,7 +106,7 @@ export default function Hero() {
                 href="https://x.com/Enez_Gubeljic" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group p-3 rounded-full bg-gradient-to-r from-gray-900 to-black hover:from-jade-electric hover:to-jade-hover transition-all duration-300 transform hover:scale-110"
+                className="group p-3 rounded-full bg-gray-900 hover:bg-jade-electric transition-all duration-300 transform hover:scale-110"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -121,15 +121,15 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
             className="relative pb-12 md:pb-16 profile-image-container"
           >
-            <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-jade-electric/20 to-interactive-primary/20 rounded-2xl rotate-12 animate-pulse" />
-            <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-clay-sunset/20 to-jade-electric/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }} />
+            <div className="absolute -top-8 -left-8 w-16 h-16 bg-interactive-primary/20 rounded-2xl rotate-12 animate-pulse" />
+            <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-clay-sunset/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }} />
             
             <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-4 group">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-jade-electric via-jade-hover to-jade-electric p-1 animate-spin" style={{ animationDuration: '8s' }}>
+              <div className="absolute inset-0 rounded-full bg-jade-electric p-1 animate-spin" style={{ animationDuration: '8s' }}>
                 <div className="w-full h-full rounded-full bg-background" />
               </div>
               
-              <div className="absolute inset-2 rounded-full bg-gradient-to-r from-jade-electric/30 to-jade-hover/30 blur-sm" />
+              <div className="absolute inset-2 rounded-full bg-jade-electric/30 blur-sm" />
               
               <div className="relative inset-3 rounded-full overflow-hidden">
                 <ProfileImage
@@ -147,7 +147,7 @@ export default function Hero() {
               <div className="absolute top-2/3 right-0 w-1 h-1 bg-jade-hover rounded-full animate-ping" style={{ animationDelay: '1s' }} />
             </div>
             
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-jade-electric/5 via-jade-hover/5 to-jade-electric/5 blur-3xl scale-150 animate-pulse" style={{ animationDuration: '4s' }} />
+            <div className="absolute inset-0 rounded-full bg-jade-electric/5 blur-3xl scale-150 animate-pulse" style={{ animationDuration: '4s' }} />
           </motion.div>
         </div>
       </div>

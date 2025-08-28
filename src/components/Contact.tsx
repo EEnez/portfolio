@@ -150,12 +150,12 @@ export default function Contact() {
             variants={itemVariants}
           >
             Me{" "}
-            <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
-              Contacter
-            </span>
+                          <span className="text-gold-rose">
+                Contacter
+              </span>
           </motion.h2>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full mb-6"
+            className="w-24 h-1 bg-gold-rose mx-auto rounded-full mb-6"
             variants={itemVariants}
           />
           <motion.p 

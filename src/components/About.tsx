@@ -58,12 +58,12 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               À propos de{" "}
-              <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+              <span className="text-clay-sunset">
                 moi
               </span>
             </motion.h2>
             <motion.div 
-              className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full"
+              className="w-24 h-1 bg-clay-sunset mx-auto rounded-full"
               initial={{ width: 0 }}
               animate={inView ? { width: 96 } : { width: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}

@@ -50,7 +50,7 @@ export default function Footer() {
             >
               <Link href="#home" className="group">
                 <h3 className="text-3xl font-black mb-4">
-                  <span className="bg-gradient-to-r from-jade-electric to-clay-sunset bg-clip-text text-transparent">
+                  <span className="text-interactive-primary">
                     Enez
                   </span>
                 </h3>
@@ -59,7 +59,7 @@ export default function Footer() {
             <p className="text-text-secondary leading-relaxed mb-6">
               Développeur Full Stack & Designer UI/UX basé à Bruxelles. Je transforme les idées en applications web modernes et fonctionnelles.
             </p>
-            <div className="w-16 h-1 bg-gradient-to-r from-jade-electric to-clay-sunset rounded-full" />
+            <div className="w-16 h-1 bg-interactive-primary rounded-full" />
           </motion.div>
           
           {/* Navigation Section */}

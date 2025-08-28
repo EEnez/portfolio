@@ -64,12 +64,12 @@ export default function Projects() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Mes{" "}
-              <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+              <span className="text-gold-rose">
                 Projets
               </span>
             </motion.h2>
             <motion.div 
-              className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full mb-6"
+              className="w-24 h-1 bg-gold-rose mx-auto rounded-full mb-6"
               initial={{ width: 0 }}
               animate={inView ? { width: 96 } : { width: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -91,7 +91,7 @@ export default function Projects() {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 relative overflow-hidden group ${
                   activeCategory === category.id
-                    ? 'bg-gradient-to-r from-jade-electric to-clay-sunset text-white shadow-lg shadow-jade-electric/30'
+                    ? 'bg-gold-rose text-white shadow-lg shadow-gold-rose/30'
                     : 'bg-surface/50 backdrop-blur-sm border border-text-secondary/20 text-text-secondary hover:text-text-primary hover:border-interactive-primary/40'
                 }`}
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -102,7 +102,7 @@ export default function Projects() {
               >
                 <span className="relative z-10">{category.name}</span>
                 {activeCategory !== category.id && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-jade-electric/10 to-clay-sunset/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gold-rose/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 )}
               </motion.button>
             ))}

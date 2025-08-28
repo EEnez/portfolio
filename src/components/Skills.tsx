@@ -37,25 +37,25 @@ export default function Skills() {
     {
       name: "Frontend",
       icon: "⚛️",
-      color: "from-jade-electric to-jade-hover",
+      color: "jade-electric",
       skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"]
     },
     {
       name: "Backend", 
       icon: "⚙️",
-      color: "from-interactive-primary to-interactive-hover",
+      color: "interactive-primary",
       skills: ["PHP", "Symfony", "MySQL", "REST APIs", "Node.js"]
     },
     {
       name: "Design",
       icon: "🎨", 
-      color: "from-clay-sunset to-clay-hover",
+      color: "clay-sunset",
       skills: ["Figma", "Photoshop", "UI/UX", "Design Systems", "Prototyping"]
     },
     {
       name: "Tools",
       icon: "🛠️",
-      color: "from-green-500 to-emerald-400", 
+      color: "gold-rose", 
       skills: ["Git", "Docker", "VS Code", "Webpack", "npm/yarn"]
     }
   ];
@@ -82,12 +82,12 @@ export default function Skills() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Mes{" "}
-              <span className="bg-gradient-to-r from-jade-electric to-interactive-primary bg-clip-text text-transparent">
+              <span className="text-jade-electric">
                 Compétences
               </span>
             </motion.h2>
             <motion.div 
-              className="w-24 h-1 bg-gradient-to-r from-jade-electric to-interactive-primary mx-auto rounded-full"
+              className="w-24 h-1 bg-jade-electric mx-auto rounded-full"
               initial={{ width: 0 }}
               animate={inView ? { width: 96 } : { width: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -106,7 +106,7 @@ export default function Skills() {
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  <div className={`absolute inset-0 bg-${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                   
                   <div className="relative z-10 text-center">
                     <motion.div 
@@ -117,7 +117,7 @@ export default function Skills() {
                       {category.icon}
                     </motion.div>
                     
-                    <h3 className={`text-xl font-bold mb-6 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
+                    <h3 className={`text-xl font-bold mb-6 text-${category.color}`}>
                       {category.name}
                     </h3>
                     
@@ -153,7 +153,7 @@ export default function Skills() {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-jade-electric to-clay-sunset bg-clip-text text-transparent">
+                              <h3 className="text-2xl font-bold mb-4 text-jade-electric">
                 🚀 Toujours en évolution
               </h3>
               <p className="text-text-secondary leading-relaxed">
