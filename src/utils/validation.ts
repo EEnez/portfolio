@@ -14,7 +14,7 @@ export interface ValidationErrors {
 
 export const sanitizeInput = (input: string): string => {
   return input
-    .trim() // Remove only leading and trailing whitespace
+    .trim()
     .replace(/[<>]/g, '')
     .replace(/javascript:/gi, '')
     .replace(/on\w+\s*=/gi, '');
@@ -27,11 +27,10 @@ export const sanitizeMessage = (message: string): string => {
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 export const isValidEmail = (email: string): boolean => {
-  // Additional security checks
   if (email.length > 254) return false;
-  if (email.includes('..')) return false; // No consecutive dots
-  if (email.startsWith('.') || email.endsWith('.')) return false; // No leading/trailing dots
-  if (email.includes('@.') || email.includes('.@')) return false; // No @. or .@
+  if (email.includes('..')) return false;
+  if (email.startsWith('.') || email.endsWith('.')) return false;
+  if (email.includes('@.') || email.includes('.@')) return false;
   
   return EMAIL_REGEX.test(email);
 };
@@ -58,7 +57,7 @@ export const validateContactForm = (data: ContactFormData): ValidationErrors => 
     name: sanitizeInput(data.name),
     email: sanitizeInput(data.email),
     subject: sanitizeInput(data.subject),
-    message: sanitizeMessage(data.message) // Use special function for message
+    message: sanitizeMessage(data.message)
   };
 
   if (!sanitizedData.name) {

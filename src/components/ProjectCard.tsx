@@ -39,11 +39,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
           </motion.div>
         </div>
 
-        {project.featured && (
-          <div className="absolute top-4 left-4 bg-gold-rose text-white px-3 py-1 rounded-full text-xs font-semibold">
-            ⭐ Featured
-          </div>
-        )}
+
       </div>
       
       <div className="p-8">

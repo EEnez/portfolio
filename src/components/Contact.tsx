@@ -28,7 +28,6 @@ export default function Contact() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     
-    // For message field, preserve all spaces and only remove dangerous content
     if (name === 'message') {
       const sanitizedValue = value
         .replace(/<script[^>]*>.*?<\/script>/gi, '')
@@ -38,7 +37,6 @@ export default function Contact() {
         .replace(/on\w+\s*=/gi, '');
       setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
     } else {
-      // For other fields, use normal sanitization
       const sanitizedValue = sanitizeInput(value);
       setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
     }

@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     const sanitizedName = escapeHtml(name.trim());
     const sanitizedEmail = escapeHtml(email.trim());
     const sanitizedSubject = escapeHtml(subject.trim());
-    const sanitizedMessage = escapeHtml(message); // Don't trim message to preserve spaces
+    const sanitizedMessage = escapeHtml(message);
 
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev',

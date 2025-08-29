@@ -7,7 +7,6 @@ export interface Project {
   demoLink?: string;
   codeLink?: string;
   category: string;
-  featured: boolean;
 }
 
 export const categories = [
@@ -27,8 +26,7 @@ export const projects: Project[] = [
     image: '/images/project1.png',
     tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS", "JWT"],
     codeLink: 'https://github.com/EEnez/levelist',
-    category: 'web',
-    featured: true
+    category: 'web'
   },
   {
     id: 2,
@@ -37,8 +35,7 @@ export const projects: Project[] = [
     image: '/images/project2.png',
     tags: ["Symfony", "MySQL", "Bootstrap", "Twig", "Doctrine"],
     codeLink: 'https://github.com/EEnez/sym64ENEZ',
-    category: 'web',
-    featured: true
+    category: 'web'
   },
   {
     id: 3,
@@ -47,7 +44,6 @@ export const projects: Project[] = [
     image: '/images/project3.png',
     tags: ["Figma", "WordPress", "HTML", "CSS", "JavaScript"],
     codeLink: 'https://github.com/EEnez/cf2m-redesign',
-    category: 'web',
-    featured: true
+    category: 'web'
   }
 ];

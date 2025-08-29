@@ -66,21 +66,3 @@ export const learningSkills = [
   { name: 'Motion Design', description: 'Animations avancées et micro-interactions' }
 ];
 
-export const getSkillsByCategory = (categoryId: string): Skill[] => {
-  const category = skillCategories.find(cat => cat.id === categoryId);
-  return category ? category.skills : [];
-};
-
-export const getAllSkills = (): Skill[] => {
-  return skillCategories.flatMap(category => category.skills);
-};
-
-export const getHighlightedSkills = (): Skill[] => {
-  return getAllSkills().filter(skill => skill.highlighted);
-};
-
-export const getSkillByName = (skillName: string): Skill | undefined => {
-  const allSkills = getAllSkills();
-  return allSkills.find(s => s.name === skillName);
-};
-
