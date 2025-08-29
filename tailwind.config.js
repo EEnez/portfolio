@@ -15,11 +15,33 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: {
-          DEFAULT: "hsl(var(--border))",
-          light: "hsl(var(--border-light))",
-          dark: "hsl(var(--border-dark))",
+        // Core colors using simplified variables
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          hover: "hsl(var(--primary-hover))",
+          active: "hsl(var(--primary-active))",
+          light: "hsl(var(--primary-light))",
+          dark: "hsl(var(--primary-dark))",
         },
+        
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          hover: "hsl(var(--accent-hover))",
+          muted: "hsl(var(--accent-muted))",
+        },
+        
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          hover: "hsl(var(--secondary-hover))",
+          muted: "hsl(var(--secondary-muted))",
+        },
+        
+        tertiary: {
+          DEFAULT: "hsl(var(--tertiary))",
+          hover: "hsl(var(--tertiary-hover))",
+          muted: "hsl(var(--tertiary-muted))",
+        },
+        
         background: {
           DEFAULT: "hsl(var(--background))",
           lighter: "hsl(var(--background-lighter))",
@@ -27,12 +49,30 @@ module.exports = {
           hover: "hsl(var(--background-hover))",
           secondary: "hsl(var(--background-secondary))",
         },
+        
         surface: {
           DEFAULT: "hsl(var(--surface))",
           secondary: "hsl(var(--surface-secondary))",
         },
-        foreground: "hsl(var(--foreground))",
         
+        text: {
+          primary: "hsl(var(--text-primary))",
+          secondary: "hsl(var(--text-secondary))",
+          muted: "hsl(var(--text-muted))",
+          accent: "hsl(var(--text-accent))",
+          light: "hsl(var(--text-light))",
+          dark: "hsl(var(--text-dark))",
+          white: "hsl(var(--text-white))",
+          hover: "hsl(var(--text-hover))",
+        },
+        
+        border: {
+          DEFAULT: "hsl(var(--border))",
+          light: "hsl(var(--border-light))",
+          dark: "hsl(var(--border-dark))",
+        },
+        
+        // Legacy aliases for backward compatibility
         interactive: {
           primary: "hsl(var(--interactive-primary))",
           hover: "hsl(var(--interactive-hover))",
@@ -41,27 +81,21 @@ module.exports = {
           dark: "hsl(var(--interactive-dark))",
         },
         
-        accent: {
-          tech: "hsl(var(--accent-tech))",
-          "tech-hover": "hsl(var(--accent-tech-hover))",
-          "tech-muted": "hsl(var(--accent-tech-muted))",
-        },
-
-        jade: {
-          electric: "hsl(var(--electric-jade))",
-          hover: "hsl(var(--electric-jade-hover))",
-          muted: "hsl(var(--electric-jade-muted))",
-        },
-        clay: {
-          sunset: "hsl(var(--sunset-clay))",
-          hover: "hsl(var(--sunset-clay-hover))",
-          muted: "hsl(var(--sunset-clay-muted))",
-        },
-        gold: {
-          rose: "hsl(var(--gold-rose))",
-          "rose-hover": "hsl(var(--gold-rose-hover))",
-          "rose-muted": "hsl(var(--gold-rose-muted))",
-        },
+        "accent-tech": "hsl(var(--accent-tech))",
+        "accent-tech-hover": "hsl(var(--accent-tech-hover))",
+        "accent-tech-muted": "hsl(var(--accent-tech-muted))",
+        
+        "jade-electric": "hsl(var(--electric-jade))",
+        "jade-hover": "hsl(var(--electric-jade-hover))",
+        "jade-muted": "hsl(var(--electric-jade-muted))",
+        
+        "clay-sunset": "hsl(var(--sunset-clay))",
+        "clay-hover": "hsl(var(--sunset-clay-hover))",
+        "clay-muted": "hsl(var(--sunset-clay-muted))",
+        
+        "gold-rose": "hsl(var(--gold-rose))",
+        "gold-rose-hover": "hsl(var(--gold-rose-hover))",
+        "gold-rose-muted": "hsl(var(--gold-rose-muted))",
         
         solid: {
           primary: "hsl(var(--solid-primary))",
@@ -73,33 +107,23 @@ module.exports = {
           info: "hsl(var(--solid-info))",
         },
         
-        text: {
-          primary: "hsl(var(--text-primary))",
-          secondary: "hsl(var(--text-secondary))",
-          muted: "hsl(var(--text-muted))",
-          accent: "hsl(var(--text-accent))",
-          tech: "hsl(var(--text-tech))",
-          light: "hsl(var(--text-light))",
-          dark: "hsl(var(--text-dark))",
-          white: "hsl(var(--text-white))",
-          hover: "hsl(var(--text-hover))",
-        },
-        
-        primary: "hsl(var(--interactive-primary))",
-        secondary: "hsl(var(--solid-accent))",
-        dark: "hsl(var(--background))",
-        light: "hsl(var(--text-primary))",
+        // Additional aliases for existing code
+        foreground: "hsl(var(--foreground))",
+        "text-tech": "hsl(var(--text-tech))",
       },
+      
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "sans-serif"],
         display: ["var(--font-space-grotesk)", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "sans-serif"],
         mono: ["Consolas", "Monaco", "Courier New", "monospace"],
       },
+      
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.5s ease-in-out",
-        "wiggle": "wiggle 0.5s ease-in-out",
+        "wiggle": "wiggle 0.5s ease-out",
       },
+      
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
@@ -114,8 +138,9 @@ module.exports = {
           "50%": { transform: "rotate(3deg)" },
         },
       },
+      
       boxShadow: {
-        'floating': '0 4px 20px hsl(var(--background) / 0.3), 0 2px 4px hsl(var(--interactive-primary) / 0.1)',
+        'floating': '0 4px 20px hsl(var(--background) / 0.3), 0 2px 4px hsl(var(--primary) / 0.1)',
       },
     },
   },

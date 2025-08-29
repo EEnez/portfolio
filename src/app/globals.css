@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Background colors - consolidated */
     --background: 210 9% 26%;
     --background-lighter: 210 9% 30%;
     --background-card: 210 9% 28%;
@@ -11,55 +12,79 @@
     --background-secondary: 210 9% 24%;
     --foreground: 72 56% 94%;
 
-    --interactive-primary: 245 60% 65%;
-    --interactive-hover: 245 70% 65%;
-    --interactive-active: 245 80% 65%;
-    --interactive-light: 245 60% 79%;
-    --interactive-dark: 245 60% 51%;
+    /* Primary interactive colors - main violet */
+    --primary: 245 60% 65%;
+    --primary-hover: 245 70% 65%;
+    --primary-active: 245 80% 65%;
+    --primary-light: 245 60% 79%;
+    --primary-dark: 245 60% 51%;
 
-    --accent-tech: 175 70% 55%;
-    --accent-tech-hover: 175 80% 55%;
-    --accent-tech-active: 175 90% 55%;
-    --accent-tech-muted: 175 55% 45%;
+    /* Accent colors - tech/jade */
+    --accent: 175 70% 55%;
+    --accent-hover: 175 80% 55%;
+    --accent-muted: 175 55% 45%;
 
-    --electric-jade: 175 70% 60%;
-    --electric-jade-hover: 175 80% 60%;
-    --electric-jade-active: 175 90% 60%;
-    --electric-jade-muted: 175 55% 50%;
-    --sunset-clay: 10 75% 65%;
-    --sunset-clay-hover: 10 85% 65%;
-    --sunset-clay-active: 10 95% 65%;
-    --sunset-clay-muted: 10 60% 55%;
+    /* Secondary accent colors - clay/sunset */
+    --secondary: 10 75% 65%;
+    --secondary-hover: 10 85% 65%;
+    --secondary-muted: 10 60% 55%;
 
-    --gold-rose: 25 70% 70%;
-    --gold-rose-hover: 25 80% 70%;
-    --gold-rose-active: 25 90% 70%;
-    --gold-rose-muted: 25 55% 60%;
+    /* Tertiary accent colors - gold/rose */
+    --tertiary: 25 70% 70%;
+    --tertiary-hover: 25 80% 70%;
+    --tertiary-muted: 25 55% 60%;
 
+    /* Border colors */
     --border: 0 0% 62%;
     --border-light: 0 0% 88%;
     --border-dark: 0 0% 50%;
 
-    --solid-primary: 210 9% 26%;
-    --solid-secondary: 245 60% 65%;
-    --solid-accent: 175 70% 55%;
-    --solid-success: 150 60% 55%;
-    --solid-warning: 25 85% 60%;
-    --solid-error: 355 75% 55%;
-    --solid-info: 200 70% 50%;
-
+    /* Text colors */
     --text-primary: 72 56% 94%;
     --text-secondary: 0 0% 88%;
     --text-muted: 0 0% 62%;
     --text-accent: 245 60% 72%;
-    --text-tech: 175 70% 62%;
     --text-light: 72 56% 96%;
     --text-dark: 210 9% 26%;
     --text-white: 0 0% 100%;
     --text-hover: 210 18% 95%;
 
+    /* Surface colors */
     --surface: 210 9% 28%;
     --surface-secondary: 210 9% 24%;
+
+    /* Legacy aliases for backward compatibility */
+    --interactive-primary: var(--primary);
+    --interactive-hover: var(--primary-hover);
+    --interactive-active: var(--primary-active);
+    --interactive-light: var(--primary-light);
+    --interactive-dark: var(--primary-dark);
+    
+    --accent-tech: var(--accent);
+    --accent-tech-hover: var(--accent-hover);
+    --accent-tech-muted: var(--accent-muted);
+    
+    --electric-jade: var(--accent);
+    --electric-jade-hover: var(--accent-hover);
+    --electric-jade-muted: var(--accent-muted);
+    
+    --sunset-clay: var(--secondary);
+    --sunset-clay-hover: var(--secondary-hover);
+    --sunset-clay-muted: var(--secondary-muted);
+    
+    --gold-rose: var(--tertiary);
+    --gold-rose-hover: var(--tertiary-hover);
+    --gold-rose-muted: var(--tertiary-muted);
+    
+    --solid-primary: var(--background);
+    --solid-secondary: var(--primary);
+    --solid-accent: var(--accent);
+    --solid-success: 150 60% 55%;
+    --solid-warning: 25 85% 60%;
+    --solid-error: 355 75% 55%;
+    --solid-info: 200 70% 50%;
+    
+    --text-tech: var(--accent);
   }
 
   .dark {
@@ -69,10 +94,10 @@
     --foreground: 210 20% 99%;
     --border: 220 12% 28%;
     
-    --interactive-primary: 355 75% 45%;
-    --interactive-hover: 355 80% 52%;
-    --interactive-light: 355 65% 60%;
-    --accent-tech: 190 90% 60%;
+    --primary: 355 75% 45%;
+    --primary-hover: 355 80% 52%;
+    --primary-light: 355 65% 60%;
+    --accent: 190 90% 60%;
     --solid-accent: 190 85% 50%;
   }
   
