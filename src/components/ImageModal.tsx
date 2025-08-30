@@ -42,7 +42,7 @@ export default function ImageModal({ isOpen, onClose, project }: ImageModalProps
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={onClose}
         >
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
           
           <motion.div
             initial={{ scale: 0.7, opacity: 0 }}
@@ -54,9 +54,9 @@ export default function ImageModal({ isOpen, onClose, project }: ImageModalProps
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 rounded-full transition-colors backdrop-blur-sm"
+              className="absolute top-4 right-4 z-10 p-2 bg-background/20 hover:bg-background/40 rounded-full transition-colors backdrop-blur-sm"
             >
-              <XMarkIcon className="h-6 w-6 text-white" />
+                              <XMarkIcon className="h-6 w-6 text-text-dark" />
             </button>
 
             <div className="relative">
@@ -96,7 +96,7 @@ export default function ImageModal({ isOpen, onClose, project }: ImageModalProps
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-interactive-primary text-white rounded-lg font-medium hover:bg-interactive-hover transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-interactive-primary text-text-dark rounded-lg font-medium hover:bg-interactive-hover transition-colors"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

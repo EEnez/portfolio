@@ -85,9 +85,9 @@ export default function Header() {
                 transition={{ duration: 0.3 }}
               >
                 <span className="text-2xl font-black text-text-primary transition-colors duration-300 group-hover:text-interactive-primary">
-                  <span className="text-interactive-primary group-hover:text-jade-electric transition-all duration-300">E</span><span className="hidden sm:inline">nez</span>
+                  <span className="text-interactive-primary group-hover:text-interactive-hover transition-all duration-300">E</span><span className="hidden sm:inline">nez</span>
                 </span>
-                                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-jade-electric group-hover:w-full transition-all duration-300" />
+                                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-interactive-primary group-hover:w-full transition-all duration-300" />
               </motion.div>
             </Link>
           </motion.div>
@@ -110,13 +110,13 @@ export default function Header() {
                       href={item.href}
                       className={`relative px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 rounded-lg group overflow-hidden ${
                         activeSection === item.href.substring(1)
-                          ? 'text-white bg-interactive-primary shadow-inner' 
+                          ? 'text-text-dark bg-interactive-primary shadow-inner' 
                           : 'text-text-secondary hover:text-text-primary hover:bg-surface/30 backdrop-blur-sm'
                       }`}
                     >
                       
                       {activeSection !== item.href.substring(1) && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-jade-electric/10 to-clay-sunset/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-interactive-primary/10 to-interactive-hover/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       )}
                       
                       {activeSection === item.href.substring(1) && (
@@ -138,7 +138,7 @@ export default function Header() {
           </motion.nav>
           
           <motion.button
-            className="md:hidden p-3 rounded-xl bg-surface/30 backdrop-blur-sm border border-text-secondary/20 text-interactive-primary hover:text-white hover:bg-gradient-to-r hover:from-interactive-primary hover:to-blue-400 hover:border-transparent transition-all duration-300 group"
+            className="md:hidden p-3 rounded-xl bg-surface/30 backdrop-blur-sm border border-text-secondary/20 text-interactive-primary hover:text-text-dark hover:bg-gradient-to-r hover:from-interactive-primary hover:to-interactive-hover hover:border-transparent transition-all duration-300 group"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -182,7 +182,7 @@ export default function Header() {
                       href={item.href}
                       className={`block py-4 px-4 text-left w-full transition-all duration-300 rounded-xl relative overflow-hidden group ${
                         activeSection === item.href.substring(1)
-                          ? 'text-white bg-interactive-primary shadow-lg shadow-interactive-primary/30' 
+                          ? 'text-text-dark bg-interactive-primary shadow-lg shadow-interactive-primary/30' 
                           : 'text-text-secondary hover:text-text-primary hover:bg-surface/30 backdrop-blur-sm border border-text-secondary/10 hover:border-interactive-primary/30'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
@@ -200,13 +200,13 @@ export default function Header() {
                       
                       
                       {activeSection !== item.href.substring(1) && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-jade-electric/10 to-clay-sunset/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-interactive-primary/10 to-interactive-hover/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       )}
                       
                       <span className="relative z-10 font-semibold flex items-center">
                         <span className={`w-2 h-2 rounded-full mr-3 transition-colors duration-300 ${
                           activeSection === item.href.substring(1) 
-                            ? 'bg-white' 
+                            ? 'bg-text-dark' 
                             : 'bg-interactive-primary group-hover:bg-interactive-primary'
                         }`} />
                         {item.name}

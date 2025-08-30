@@ -30,9 +30,9 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-background-secondary to-background">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+              <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-interactive-primary/5 to-interactive-hover/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-r from-interactive-hover/5 to-interactive-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10 py-16">
         <motion.div
@@ -117,7 +117,7 @@ export default function Footer() {
                 whileHover={{ x: 5 }}
               >
                 <div className="flex items-center space-x-3 text-text-secondary group-hover:text-interactive-primary transition-colors duration-300">
-                  <div className="w-8 h-8 bg-green-400/10 rounded-lg flex items-center justify-center group-hover:bg-green-400/20">
+                  <div className="w-8 h-8 bg-interactive-primary/10 rounded-lg flex items-center justify-center group-hover:bg-interactive-primary/20">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
@@ -134,7 +134,7 @@ export default function Footer() {
                 whileHover={{ x: 5 }}
               >
                 <div className="flex items-center space-x-3 text-text-secondary group-hover:text-interactive-primary transition-colors duration-300">
-                  <div className="w-8 h-8 bg-purple-400/10 rounded-lg flex items-center justify-center group-hover:bg-purple-400/20">
+                  <div className="w-8 h-8 bg-interactive-primary/10 rounded-lg flex items-center justify-center group-hover:bg-interactive-primary/20">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
@@ -153,36 +153,44 @@ export default function Footer() {
                 href="https://github.com/EEnez"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center space-x-3 p-3 bg-gradient-to-r from-gray-800/20 to-gray-900/20 border border-gray-600/20 rounded-xl hover:from-gray-700/30 hover:to-gray-800/30 hover:border-gray-500/30 transition-all duration-300"
+                className="group flex items-center space-x-4 p-4 bg-gradient-to-r from-interactive-primary/20 to-interactive-hover/20 border border-interactive-primary/20 rounded-xl hover:from-interactive-hover/30 hover:to-interactive-primary/30 hover:border-interactive-hover/30 transition-all duration-300"
                 whileHover={{ scale: 1.02, x: 5 }}
                 style={{ cursor: 'pointer' }}
+                title="GitHub"
               >
-                <GithubIcon />
-                <span className="text-sm text-text-secondary group-hover:text-text-primary">GitHub</span>
+                <div className="flex-shrink-0">
+                  <GithubIcon variant="footer" />
+                </div>
+                <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">GitHub</span>
               </motion.a>
               
               <motion.a
                 href="https://www.linkedin.com/in/enez-gubeljic-76313229b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-600/20 to-blue-700/20 border border-blue-500/20 rounded-xl hover:from-blue-500/30 hover:to-blue-600/30 hover:border-blue-400/30 transition-all duration-300"
+                className="group flex items-center space-x-4 p-4 bg-gradient-to-r from-interactive-primary/20 to-interactive-hover/20 border border-interactive-primary/20 rounded-xl hover:from-interactive-hover/30 hover:to-interactive-primary/30 hover:border-interactive-hover/30 transition-all duration-300"
                 whileHover={{ scale: 1.02, x: 5 }}
                 style={{ cursor: 'pointer' }}
+                title="LinkedIn"
               >
-                <LinkedInIcon />
-                <span className="text-sm text-text-secondary group-hover:text-text-primary">LinkedIn</span>
+                <div className="flex-shrink-0">
+                  <LinkedInIcon variant="footer" />
+                </div>
+                <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">LinkedIn</span>
               </motion.a>
               
               <motion.a
                 href="https://x.com/Enez_Gubeljic"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center space-x-3 p-3 bg-gradient-to-r from-gray-900/20 to-black/20 border border-gray-700/20 rounded-xl hover:from-gray-800/30 hover:to-gray-900/30 hover:border-gray-600/30 transition-all duration-300"
-                whileHover={{ scale: 1.02, x: 5 }}
+                className="group flex items-center space-x-4 p-4 bg-gradient-to-r from-interactive-primary/20 to-interactive-hover/20 border border-interactive-primary/20 rounded-xl hover:from-interactive-hover/30 hover:to-interactive-primary/30 hover:border-interactive-hover/30 transition-all duration-300"
                 style={{ cursor: 'pointer' }}
+                title="Twitter"
               >
-                <TwitterIcon />
-                <span className="text-sm text-text-secondary group-hover:text-text-primary">Twitter</span>
+                <div className="flex-shrink-0">
+                  <TwitterIcon variant="footer" />
+                </div>
+                <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">Twitter</span>
               </motion.a>
             </div>
           </motion.div>

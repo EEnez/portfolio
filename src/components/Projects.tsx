@@ -45,8 +45,8 @@ export default function Projects() {
   return (
     <section id="projects" className="pt-16 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background-secondary" />
-      <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
-      <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
+              <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-gradient-to-r from-interactive-primary/5 to-interactive-hover/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
+              <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-gradient-to-r from-interactive-hover/5 to-interactive-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s', animationDelay: '4s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -64,12 +64,12 @@ export default function Projects() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Mes{" "}
-              <span className="text-gold-rose">
+              <span className="text-interactive-primary">
                 Projets
               </span>
             </motion.h2>
             <motion.div 
-              className="w-24 h-1 bg-gold-rose mx-auto rounded-full mb-6"
+              className="w-24 h-1 bg-interactive-primary mx-auto rounded-full mb-6"
               initial={{ width: 0 }}
               animate={inView ? { width: 96 } : { width: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -91,7 +91,7 @@ export default function Projects() {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 relative overflow-hidden group ${
                   activeCategory === category.id
-                    ? 'bg-gold-rose text-white shadow-lg shadow-gold-rose/30'
+                    ? 'bg-interactive-primary text-text-dark shadow-lg shadow-interactive-primary/30'
                     : 'bg-surface/50 backdrop-blur-sm border border-text-secondary/20 text-text-secondary hover:text-text-primary hover:border-interactive-primary/40'
                 }`}
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -102,7 +102,7 @@ export default function Projects() {
               >
                 <span className="relative z-10">{category.name}</span>
                 {activeCategory !== category.id && (
-                  <div className="absolute inset-0 bg-gold-rose/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-interactive-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 )}
               </motion.button>
             ))}

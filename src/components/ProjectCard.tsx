@@ -17,7 +17,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-gold-rose rounded-full opacity-20 animate-pulse" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-interactive-primary rounded-full opacity-20 animate-pulse" />
       
       <div className="relative cursor-pointer overflow-hidden" onClick={() => onImageClick?.(project)}>
         <ProjectImage
@@ -27,15 +27,15 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
           className="group-hover:scale-110 transition-transform duration-700 ease-out"
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
         
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
           <motion.div 
-            className="bg-white/20 backdrop-blur-md rounded-full p-4 border border-white/30"
+            className="bg-interactive-primary/20 backdrop-blur-md rounded-full p-4 border border-interactive-primary/30"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <MagnifyingGlassIcon className="h-6 w-6 text-white" />
+            <MagnifyingGlassIcon className="h-6 w-6 text-text-dark" />
           </motion.div>
         </div>
 
@@ -81,7 +81,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
                 href={project.demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gold-rose text-white rounded-xl font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-gold-rose/30 group"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-interactive-primary text-text-dark rounded-xl font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-interactive-primary/30 group"
                 style={{ cursor: 'pointer' }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -107,7 +107,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
               href={project.codeLink || project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-                              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gray-800 text-white rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-gold-rose hover:shadow-lg hover:shadow-gold-rose/30 group"
+                              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-interactive-primary text-text-dark rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-interactive-hover hover:shadow-lg hover:shadow-interactive-primary/30 group"
               style={{ cursor: 'pointer' }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
@@ -119,7 +119,7 @@ export default function ProjectCard({ project, onImageClick }: ProjectCardProps)
         </div>
       </div>
 
-              <div className="absolute inset-0 bg-gold-rose/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+              <div className="absolute inset-0 bg-interactive-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
     </motion.div>
   );
 } 

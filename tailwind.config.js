@@ -15,7 +15,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        // Core colors using simplified variables
+        // Core colors using CYBER AMBER PALETTE
         primary: {
           DEFAULT: "hsl(var(--primary))",
           hover: "hsl(var(--primary-hover))",
@@ -72,7 +72,7 @@ module.exports = {
           dark: "hsl(var(--border-dark))",
         },
         
-        // Legacy aliases for backward compatibility
+        // Interactive colors - CYBER AMBER
         interactive: {
           primary: "hsl(var(--interactive-primary))",
           hover: "hsl(var(--interactive-hover))",
@@ -81,6 +81,7 @@ module.exports = {
           dark: "hsl(var(--interactive-dark))",
         },
         
+        // Legacy aliases - CYBER AMBER
         "accent-tech": "hsl(var(--accent-tech))",
         "accent-tech-hover": "hsl(var(--accent-tech-hover))",
         "accent-tech-muted": "hsl(var(--accent-tech-muted))",

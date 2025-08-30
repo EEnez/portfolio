@@ -4,103 +4,100 @@
 
 @layer base {
   :root {
-    /* Background colors - consolidated */
+    /* Background colors */
     --background: 210 9% 26%;
-    --background-lighter: 210 9% 30%;
-    --background-card: 210 9% 28%;
-    --background-hover: 210 9% 32%;
-    --background-secondary: 210 9% 24%;
-    --foreground: 72 56% 94%;
+    --background-lighter: 210 12% 30%;
+    --background-card: 210 12% 20%;
+    --background-hover: 210 15% 32%;
+    --background-secondary: 210 15% 15%;
+    --foreground: 210 20% 90%;
+  
+    /* Primary interactive colors */
+    --primary: 45 100% 65%;
+    --primary-hover: 45 100% 70%;
+    --primary-active: 45 100% 60%;
+    --primary-light: 45 100% 75%;
+    --primary-dark: 45 100% 55%;
+  
+    /* Accent colors */
+    --accent: 45 100% 65%;
+    --accent-hover: 45 100% 70%;
+    --accent-muted: 45 80% 55%;
+  
+    /* Secondary accent */
+    --secondary: 35 90% 65%;
+    --secondary-hover: 35 95% 70%;
+    --secondary-muted: 35 75% 55%;
 
-    /* Primary interactive colors - main violet */
-    --primary: 245 60% 65%;
-    --primary-hover: 245 70% 65%;
-    --primary-active: 245 80% 65%;
-    --primary-light: 245 60% 79%;
-    --primary-dark: 245 60% 51%;
-
-    /* Accent colors - tech/jade */
-    --accent: 175 70% 55%;
-    --accent-hover: 175 80% 55%;
-    --accent-muted: 175 55% 45%;
-
-    /* Secondary accent colors - clay/sunset */
-    --secondary: 10 75% 65%;
-    --secondary-hover: 10 85% 65%;
-    --secondary-muted: 10 60% 55%;
-
-    /* Tertiary accent colors - gold/rose */
-    --tertiary: 25 70% 70%;
-    --tertiary-hover: 25 80% 70%;
-    --tertiary-muted: 25 55% 60%;
-
+    /* Tertiary accent */
+    --tertiary: 55 90% 65%;
+    --tertiary-hover: 55 95% 70%;
+    --tertiary-muted: 55 75% 55%;
+      
     /* Border colors */
-    --border: 0 0% 62%;
-    --border-light: 0 0% 88%;
-    --border-dark: 0 0% 50%;
-
+    --border: 210 15% 30%;
+    --border-light: 210 15% 40%;
+    --border-dark: 210 15% 20%;
+  
     /* Text colors */
-    --text-primary: 72 56% 94%;
-    --text-secondary: 0 0% 88%;
-    --text-muted: 0 0% 62%;
-    --text-accent: 245 60% 72%;
-    --text-light: 72 56% 96%;
+    --text-primary: 210 20% 90%;
+    --text-secondary: 210 12% 70%;
+    --text-muted: 210 12% 60%;
+    --text-accent: 45 100% 75%;
+    --text-light: 210 20% 95%;
     --text-dark: 210 9% 26%;
     --text-white: 0 0% 100%;
-    --text-hover: 210 18% 95%;
-
+    --text-hover: 45 100% 80%;
+  
     /* Surface colors */
-    --surface: 210 9% 28%;
-    --surface-secondary: 210 9% 24%;
-
-    /* Legacy aliases for backward compatibility */
-    --interactive-primary: var(--primary);
-    --interactive-hover: var(--primary-hover);
-    --interactive-active: var(--primary-active);
-    --interactive-light: var(--primary-light);
-    --interactive-dark: var(--primary-dark);
+    --surface: 210 12% 20%;
+    --surface-secondary: 210 15% 15%;
+  
+    /* Interactive colors */
+    --interactive-primary: 45 100% 65%;
+    --interactive-hover: 45 100% 70%;
+    --interactive-active: 45 100% 60%;
+    --interactive-light: 45 100% 75%;
+    --interactive-dark: 45 100% 55%;
+  
+    /* Legacy colors */
+    --electric-jade: 45 100% 65%;
+    --electric-jade-hover: 45 100% 70%;
+    --electric-jade-muted: 45 80% 55%;
     
-    --accent-tech: var(--accent);
-    --accent-tech-hover: var(--accent-hover);
-    --accent-tech-muted: var(--accent-muted);
+    --sunset-clay: 45 100% 65%;
+    --sunset-clay-hover: 45 100% 70%;
+    --sunset-clay-muted: 45 80% 55%;
     
-    --electric-jade: var(--accent);
-    --electric-jade-hover: var(--accent-hover);
-    --electric-jade-muted: var(--accent-muted);
+    --gold-rose: 45 100% 65%;
+    --gold-rose-hover: 45 100% 70%;
+    --gold-rose-muted: 45 80% 55%;
     
-    --sunset-clay: var(--secondary);
-    --sunset-clay-hover: var(--secondary-hover);
-    --sunset-clay-muted: var(--secondary-muted);
-    
-    --gold-rose: var(--tertiary);
-    --gold-rose-hover: var(--tertiary-hover);
-    --gold-rose-muted: var(--tertiary-muted);
-    
-    --solid-primary: var(--background);
-    --solid-secondary: var(--primary);
-    --solid-accent: var(--accent);
-    --solid-success: 150 60% 55%;
-    --solid-warning: 25 85% 60%;
-    --solid-error: 355 75% 55%;
-    --solid-info: 200 70% 50%;
-    
-    --text-tech: var(--accent);
-  }
-
-  .dark {
-    --background: 225 18% 6%;
-    --background-lighter: 220 15% 9%;
-    --background-hover: 215 12% 12%;
-    --foreground: 210 20% 99%;
-    --border: 220 12% 28%;
-    
-    --primary: 355 75% 45%;
-    --primary-hover: 355 80% 52%;
-    --primary-light: 355 65% 60%;
-    --accent: 190 90% 60%;
-    --solid-accent: 190 85% 50%;
+    --accent-tech: 45 100% 65%;
+    --accent-tech-hover: 45 100% 70%;
+    --accent-tech-muted: 45 80% 55%;
+  
+    /* Status colors */
+    --solid-success: 160 60% 50%;
+    --solid-warning: 45 100% 65%;
+    --solid-error: 0 70% 60%;
+    --solid-info: 45 100% 65%;
   }
   
+  .dark {
+    /* Version encore plus sombre */
+    --background: 210 15% 15%;
+    --background-lighter: 210 12% 18%;
+    --background-card: 210 12% 12%;
+    --background-hover: 210 15% 22%;
+    --foreground: 210 20% 95%;
+    --border: 210 15% 25%;
+    
+    --primary: 45 100% 70%;
+    --primary-hover: 45 100% 75%;
+    --accent: 45 100% 70%;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--text-primary));
@@ -238,7 +235,7 @@
   }
 
   .btn-primary {
-    @apply px-4 sm:px-6 py-3 sm:py-2.5 bg-interactive-primary text-white rounded-md font-medium color-state-transition
+    @apply px-4 sm:px-6 py-3 sm:py-2.5 bg-interactive-primary text-text-dark rounded-md font-medium color-state-transition
     hover:bg-interactive-hover focus:outline-none focus:ring-2 focus:ring-interactive-primary focus:ring-offset-2
     active:bg-interactive-active shadow-sm hover:shadow-lg hover:-translate-y-0.5 text-center hover-saturation;
   }
@@ -289,8 +286,6 @@
   .card-japanese:hover {
     @apply border-interactive-primary/30 shadow-floating bg-background-hover;
   }
-  
-
 }
 
 @keyframes fadeInUp {
@@ -336,8 +331,6 @@
     transform: translateX(0);
   }
 }
-
-
 
 /* Mobile optimizations */
 @media (max-width: 768px) {

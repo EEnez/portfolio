@@ -23,7 +23,7 @@ export default function ProfileImage({
   return (
     <div className={`relative overflow-hidden group ${className}`}>
       {isLoading && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 animate-pulse rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-interactive-primary/20 to-interactive-primary/30 animate-pulse rounded-full" />
       )}
       
       <Image
@@ -43,7 +43,7 @@ export default function ProfileImage({
         sizes="(max-width: 768px) 256px, 320px"
       />
       
-      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+      <div className="absolute inset-0 bg-background/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
     </div>
   );
 }

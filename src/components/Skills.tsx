@@ -37,7 +37,7 @@ export default function Skills() {
     {
       name: "Frontend",
       icon: "⚛️",
-      color: "jade-electric",
+      color: "interactive-primary",
       skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"]
     },
     {
@@ -49,13 +49,13 @@ export default function Skills() {
     {
       name: "Design",
       icon: "🎨", 
-      color: "clay-sunset",
+      color: "interactive-primary",
       skills: ["Figma", "Photoshop", "UI/UX", "Design Systems", "Prototyping"]
     },
     {
       name: "Tools",
       icon: "🛠️",
-      color: "gold-rose", 
+      color: "interactive-primary", 
       skills: ["Git", "Docker", "VS Code", "Webpack", "npm/yarn"]
     }
   ];
@@ -63,8 +63,8 @@ export default function Skills() {
   return (
     <section id="skills" className="pt-16 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background-secondary to-background" />
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-clay-sunset/5 to-jade-electric/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-jade-electric/5 to-clay-sunset/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '3s' }} />
+              <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-interactive-primary/5 to-interactive-hover/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
+              <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-interactive-hover/5 to-interactive-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '3s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -82,12 +82,12 @@ export default function Skills() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Mes{" "}
-              <span className="text-jade-electric">
+              <span className="text-interactive-primary">
                 Compétences
               </span>
             </motion.h2>
             <motion.div 
-              className="w-24 h-1 bg-jade-electric mx-auto rounded-full"
+              className="w-24 h-1 bg-interactive-primary mx-auto rounded-full"
               initial={{ width: 0 }}
               animate={inView ? { width: 96 } : { width: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -106,7 +106,7 @@ export default function Skills() {
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`absolute inset-0 bg-${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  <div className="absolute inset-0 bg-interactive-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
                   
                   <div className="relative z-10 text-center">
                     <motion.div 
@@ -117,7 +117,7 @@ export default function Skills() {
                       {category.icon}
                     </motion.div>
                     
-                    <h3 className={`text-xl font-bold mb-6 text-${category.color}`}>
+                    <h3 className="text-xl font-bold mb-6 text-interactive-primary">
                       {category.name}
                     </h3>
                     
@@ -141,7 +141,7 @@ export default function Skills() {
                     </div>
                   </div>
                   
-                  <div className={`absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r ${category.color} rounded-full opacity-20 animate-pulse`} />
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-interactive-primary to-interactive-hover rounded-full opacity-20 animate-pulse" />
                 </motion.div>
               </motion.div>
             ))}
@@ -153,7 +153,7 @@ export default function Skills() {
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-                              <h3 className="text-2xl font-bold mb-4 text-jade-electric">
+                              <h3 className="text-2xl font-bold mb-4 text-interactive-primary">
                 🚀 Toujours en évolution
               </h3>
               <p className="text-text-secondary leading-relaxed">
