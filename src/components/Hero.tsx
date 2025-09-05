@@ -1,23 +1,56 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import ProfileImage from './ProfileImage';
 import { GithubIcon, LinkedInIcon, TwitterIcon } from './SocialIcons';
 import TypingText from './TypingText';
 import MagneticButton from './MagneticButton';
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 300], [0, -50]);
+  const y2 = useTransform(scrollY, [0, 300], [0, -30]);
+  const y3 = useTransform(scrollY, [0, 300], [0, -20]);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pb-16 md:pb-20">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background-lighter to-background-secondary" />
       
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-interactive-primary/10 to-interactive-hover/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-interactive-hover/10 to-interactive-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '2s' }} />
+        <motion.div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-interactive-primary/10 to-interactive-hover/10 rounded-full blur-3xl"
+          style={{ y: y1 }}
+          animate={{ 
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-interactive-hover/10 to-interactive-primary/10 rounded-full blur-3xl"
+          style={{ y: y2 }}
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.4, 0.3]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
       </div>
       
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-interactive-primary/20 via-transparent to-transparent" />
+        <motion.div 
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-interactive-primary/20 via-transparent to-transparent"
+          style={{ y: y3 }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -124,9 +157,15 @@ export default function Hero() {
           </motion.div>
           
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+            initial={{ opacity: 0, scale: 0.6, rotateY: 30, rotateX: 15 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0, rotateX: 0 }}
+            transition={{ 
+              duration: 1.2, 
+              delay: 0.3, 
+              type: "spring", 
+              stiffness: 80,
+              damping: 15
+            }}
             className="relative pb-12 md:pb-16 profile-image-container"
           >
             <div className="absolute -top-8 -left-8 w-16 h-16 bg-interactive-primary/20 rounded-2xl rotate-12 animate-pulse" />

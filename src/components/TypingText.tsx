@@ -54,13 +54,24 @@ export default function TypingText({
   }, [currentIndex, text.length]);
 
   return (
-    <span className={className}>
+    <motion.span 
+      className={className}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: delay / 1000 }}
+    >
       {displayText}
       <motion.span
         className="inline-block w-0.5 h-6 md:h-8 bg-interactive-primary ml-1"
-        animate={{ opacity: showCursor ? 1 : 0 }}
-        transition={{ duration: 0.1 }}
+        animate={{ 
+          opacity: showCursor ? 1 : 0,
+          scaleY: showCursor ? 1 : 0.8
+        }}
+        transition={{ 
+          duration: 0.1,
+          ease: "easeInOut"
+        }}
       />
-    </span>
+    </motion.span>
   );
 }

@@ -35,6 +35,7 @@ export default function ProfileImage({
           duration-700 ease-in-out transform w-full h-full object-cover
           ${isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0'}
           transition-transform duration-500
+          animate-pulse-subtle
         `}
         onLoad={() => setIsLoading(false)}
         onError={() => setIsLoading(false)}
