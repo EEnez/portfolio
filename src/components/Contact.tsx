@@ -129,13 +129,11 @@ export default function Contact() {
 
   return (
     <section id="contact" className="pt-16 pb-16 relative overflow-hidden">
-      {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background-secondary to-background" />
               <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-gradient-to-r from-interactive-primary/5 to-interactive-hover/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '18s' }} />
               <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-gradient-to-r from-interactive-hover/5 to-interactive-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '14s', animationDelay: '5s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Title */}
         <motion.div
           ref={ref}
           initial="hidden"
@@ -165,8 +163,6 @@ export default function Contact() {
         </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          
-          {/* Contact Info Sidebar */}
           <motion.div
             variants={containerVariants}
             className="lg:col-span-1 space-y-6"
@@ -182,14 +178,12 @@ export default function Contact() {
                 whileHover={{ y: -5, scale: 1.02 }}
                 style={{ cursor: 'pointer' }}
               >
-                {/* Floating decoration */}
                 <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-20 animate-pulse ${
                   index === 0 ? 'bg-gradient-to-r from-interactive-primary to-interactive-hover' :
                   index === 1 ? 'bg-gradient-to-r from-interactive-primary to-interactive-hover' :
                   'bg-gradient-to-r from-interactive-primary to-interactive-hover'
                 }`} />
                 
-                {/* Hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-r from-interactive-primary/5 to-interactive-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
                 
                 <div className="relative z-10 flex items-start space-x-4">
@@ -220,20 +214,14 @@ export default function Contact() {
                 </div>
               </motion.a>
             ))}
-            
-
           </motion.div>
           
-          
-          {/* Contact Form */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-2 bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-8 md:p-10 relative overflow-hidden"
           >
-            {/* Floating decoration */}
             <div className="absolute -top-2 -left-2 w-6 h-6 bg-gradient-to-r from-interactive-primary to-interactive-hover rounded-full opacity-20 animate-pulse" />
             
-            {/* Success Message */}
             {submitSuccess ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: -10 }}
@@ -252,7 +240,6 @@ export default function Contact() {
               </motion.div>
             ) : null}
             
-            {/* Error Message */}
             {submitError ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: -10 }}

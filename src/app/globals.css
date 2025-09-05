@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    /* Background colors */
     --background: 210 9% 26%;
     --background-lighter: 210 12% 30%;
     --background-card: 210 12% 20%;
@@ -12,34 +11,28 @@
     --background-secondary: 210 15% 15%;
     --foreground: 210 20% 90%;
   
-    /* Primary interactive colors */
     --primary: 45 100% 65%;
     --primary-hover: 45 100% 70%;
     --primary-active: 45 100% 60%;
     --primary-light: 45 100% 75%;
     --primary-dark: 45 100% 55%;
   
-    /* Accent colors */
     --accent: 45 100% 65%;
     --accent-hover: 45 100% 70%;
     --accent-muted: 45 80% 55%;
   
-    /* Secondary accent */
     --secondary: 35 90% 65%;
     --secondary-hover: 35 95% 70%;
     --secondary-muted: 35 75% 55%;
 
-    /* Tertiary accent */
     --tertiary: 55 90% 65%;
     --tertiary-hover: 55 95% 70%;
     --tertiary-muted: 55 75% 55%;
       
-    /* Border colors */
     --border: 210 15% 30%;
     --border-light: 210 15% 40%;
     --border-dark: 210 15% 20%;
   
-    /* Text colors */
     --text-primary: 210 20% 90%;
     --text-secondary: 210 12% 70%;
     --text-muted: 210 12% 60%;
@@ -49,54 +42,21 @@
     --text-white: 0 0% 100%;
     --text-hover: 45 100% 80%;
   
-    /* Surface colors */
     --surface: 210 12% 20%;
     --surface-secondary: 210 15% 15%;
   
-    /* Interactive colors */
     --interactive-primary: 45 100% 65%;
     --interactive-hover: 45 100% 70%;
     --interactive-active: 45 100% 60%;
     --interactive-light: 45 100% 75%;
     --interactive-dark: 45 100% 55%;
-  
-    /* Legacy colors */
-    --electric-jade: 45 100% 65%;
-    --electric-jade-hover: 45 100% 70%;
-    --electric-jade-muted: 45 80% 55%;
-    
-    --sunset-clay: 45 100% 65%;
-    --sunset-clay-hover: 45 100% 70%;
-    --sunset-clay-muted: 45 80% 55%;
-    
-    --gold-rose: 45 100% 65%;
-    --gold-rose-hover: 45 100% 70%;
-    --gold-rose-muted: 45 80% 55%;
-    
-    --accent-tech: 45 100% 65%;
-    --accent-tech-hover: 45 100% 70%;
-    --accent-tech-muted: 45 80% 55%;
-  
-    /* Status colors */
+
     --solid-success: 160 60% 50%;
     --solid-warning: 45 100% 65%;
     --solid-error: 0 70% 60%;
     --solid-info: 45 100% 65%;
   }
   
-  .dark {
-    /* Version encore plus sombre */
-    --background: 210 15% 15%;
-    --background-lighter: 210 12% 18%;
-    --background-card: 210 12% 12%;
-    --background-hover: 210 15% 22%;
-    --foreground: 210 20% 95%;
-    --border: 210 15% 25%;
-    
-    --primary: 45 100% 70%;
-    --primary-hover: 45 100% 75%;
-    --accent: 45 100% 70%;
-  }
 
   body {
     background-color: hsl(var(--background));
@@ -129,10 +89,6 @@
   
   .gradient-primary {
     @apply text-interactive-primary;
-  }
-  
-  .gradient-tech {
-    @apply text-accent-tech;
   }
   
   .gradient-japanese {
@@ -332,7 +288,6 @@
   }
 }
 
-/* Mobile optimizations */
 @media (max-width: 768px) {
   .container {
     padding-left: 1.5rem !important;
@@ -389,9 +344,7 @@
   }
 }
 
-/* Animation optimizations */
 @media (max-width: 768px) {
-  /* Animation duration */
   .animate-fade-in-up,
   .animate-fade-in-down,
   .animate-scale-in,
@@ -416,7 +369,6 @@
   }
 }
 
-/* Touch optimizations */
 @media (hover: none) and (pointer: coarse) {
   button, a, .btn-primary, .btn-outline {
     min-height: 44px !important;
@@ -430,7 +382,6 @@
   }
 }
 
-/* Performance optimizations */
 @media (max-width: 768px) {
   .blur-3xl {
     filter: blur(1.5rem) !important;
@@ -444,7 +395,6 @@
     animation: none !important;
   }
   
-  /* Project images mobile optimization */
   img[src*="project"] {
     min-height: 250px !important;
     object-fit: contain !important;
@@ -452,12 +402,10 @@
     background: hsl(var(--background-card)) !important;
   }
   
-  /* Project grid mobile layout */
   .grid.grid-cols-1 {
     gap: 2rem !important;
   }
   
-  /* Hero social icons mobile optimization */
   .flex.gap-8 a {
     min-height: 48px !important;
     min-width: 48px !important;
@@ -478,19 +426,16 @@
     transition: transform 0.1s ease !important;
   }
   
-  /* Disable framer-motion animations */
   .flex.gap-8 a[data-framer-motion] {
     animation: none !important;
   }
   
-  /* Social links priority */
   .flex.gap-8 a[href*="github"],
   .flex.gap-8 a[href*="linkedin"],
   .flex.gap-8 a[href*="x.com"] {
     z-index: 30 !important;
   }
   
-  /* Motion preferences */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;

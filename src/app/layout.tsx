@@ -110,7 +110,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-background dark:bg-background-secondary text-text-primary dark:text-text-primary transition-colors duration-300`}
+        className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-background text-text-primary transition-colors duration-300`}
       >
         {children}
       </body>

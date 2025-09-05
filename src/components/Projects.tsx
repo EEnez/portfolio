@@ -22,6 +22,43 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+const getAnimationVariant = (index: number) => {
+  const variants = [
+    {
+      initial: { opacity: 0, y: 50, scale: 0.9 },
+      animate: { opacity: 1, y: 0, scale: 1 },
+      transition: { duration: 0.6, ease: "easeOut" }
+    },
+    {
+      initial: { opacity: 0, x: -50, y: 20 },
+      animate: { opacity: 1, x: 0, y: 0 },
+      transition: { duration: 0.6, ease: "easeOut" }
+    },
+    {
+      initial: { opacity: 0, x: 50, y: 20 },
+      animate: { opacity: 1, x: 0, y: 0 },
+      transition: { duration: 0.6, ease: "easeOut" }
+    },
+    {
+      initial: { opacity: 0, scale: 0.8, rotate: -5 },
+      animate: { opacity: 1, scale: 1, rotate: 0 },
+      transition: { duration: 0.6, ease: "easeOut" }
+    },
+    {
+      initial: { opacity: 0, y: 30, scale: 0.95 },
+      animate: { opacity: 1, y: 0, scale: 1 },
+      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }
+    },
+    {
+      initial: { opacity: 0, y: 40, scale: 0.9 },
+      animate: { opacity: 1, y: 0, scale: 1 },
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  ];
+  
+  return variants[index % variants.length];
+};
+
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -112,25 +149,27 @@ export default function Projects() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             layout
           >
-            {filteredProjects.map((project, index) => (
-              <motion.div 
-                key={project.id} 
-                variants={itemVariants}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: 1.2 + (index * 0.1),
-                  ease: "easeOut"
-                }}
-                layout
-              >
+            {filteredProjects.map((project, index) => {
+              const animationVariant = getAnimationVariant(index);
+              return (
+                <motion.div 
+                  key={project.id} 
+                  variants={itemVariants}
+                  initial={animationVariant.initial}
+                  animate={inView ? animationVariant.animate : animationVariant.initial}
+                  transition={{ 
+                    ...animationVariant.transition,
+                    delay: 1.2 + (index * 0.1)
+                  }}
+                  layout
+                >
                 <ProjectCard 
                   project={project} 
                   onImageClick={handleImageClick}
                 />
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </motion.div>
         </motion.div>
       </div>

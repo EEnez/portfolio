@@ -76,8 +76,8 @@ export async function POST(request: NextRequest) {
     const sanitizedMessage = escapeHtml(message);
 
     const data = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'enezgubeljic@gmail.com', 
+      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+      to: process.env.RESEND_TO_EMAIL || 'your-email@example.com', 
       subject: `Portfolio Contact: ${sanitizedSubject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

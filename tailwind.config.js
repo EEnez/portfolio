@@ -15,7 +15,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        // Core colors using CYBER AMBER PALETTE
         primary: {
           DEFAULT: "hsl(var(--primary))",
           hover: "hsl(var(--primary-hover))",
@@ -72,7 +71,6 @@ module.exports = {
           dark: "hsl(var(--border-dark))",
         },
         
-        // Interactive colors - CYBER AMBER
         interactive: {
           primary: "hsl(var(--interactive-primary))",
           hover: "hsl(var(--interactive-hover))",
@@ -81,22 +79,6 @@ module.exports = {
           dark: "hsl(var(--interactive-dark))",
         },
         
-        // Legacy aliases - CYBER AMBER
-        "accent-tech": "hsl(var(--accent-tech))",
-        "accent-tech-hover": "hsl(var(--accent-tech-hover))",
-        "accent-tech-muted": "hsl(var(--accent-tech-muted))",
-        
-        "jade-electric": "hsl(var(--electric-jade))",
-        "jade-hover": "hsl(var(--electric-jade-hover))",
-        "jade-muted": "hsl(var(--electric-jade-muted))",
-        
-        "clay-sunset": "hsl(var(--sunset-clay))",
-        "clay-hover": "hsl(var(--sunset-clay-hover))",
-        "clay-muted": "hsl(var(--sunset-clay-muted))",
-        
-        "gold-rose": "hsl(var(--gold-rose))",
-        "gold-rose-hover": "hsl(var(--gold-rose-hover))",
-        "gold-rose-muted": "hsl(var(--gold-rose-muted))",
         
         solid: {
           primary: "hsl(var(--solid-primary))",
@@ -108,7 +90,6 @@ module.exports = {
           info: "hsl(var(--solid-info))",
         },
         
-        // Additional aliases for existing code
         foreground: "hsl(var(--foreground))",
         "text-tech": "hsl(var(--text-tech))",
       },

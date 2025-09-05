@@ -36,7 +36,6 @@ export default function About() {
 
   return (
     <section id="about" className="pt-16 pb-16 relative overflow-hidden">
-      {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-background-secondary" />
               <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-interactive-primary/5 to-interactive-hover/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
               <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-r from-interactive-hover/5 to-interactive-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
@@ -49,7 +48,6 @@ export default function About() {
           variants={containerVariants}
           className="max-w-6xl mx-auto"
         >
-          {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <motion.h2 
               className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
@@ -71,9 +69,7 @@ export default function About() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Content Side */}
             <motion.div variants={itemVariants} className="space-y-8">
-              {/* Intro Card */}
               <motion.div 
                 className="bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-8 relative overflow-hidden group"
                 whileHover={{ y: -5 }}
@@ -88,7 +84,6 @@ export default function About() {
                 </div>
               </motion.div>
 
-              {/* Skills Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <motion.div 
                   variants={itemVariants}
@@ -122,7 +117,6 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* Philosophy Side */}
             <motion.div variants={itemVariants} className="space-y-8">
               <motion.div 
                 className="bg-gradient-to-br from-surface/50 to-surface-secondary/30 backdrop-blur-sm border border-text-secondary/10 rounded-2xl p-8 relative overflow-hidden group"
@@ -155,7 +149,6 @@ export default function About() {
                 </div>
               </motion.div>
 
-              {/* CV Download */}
               <motion.div variants={itemVariants} className="text-center">
                 <MagneticButton 
                   as="a" 
