@@ -1,16 +1,15 @@
 # Portfolio - Enez Gubeljic
 
-> Portfolio moderne d'un développeur Full Stack Junior basé à Bruxelles.
+> Modern portfolio of a Junior Full Stack Developer based in Brussels.
 
-## 🌐 Demo Live
+## 🌐 Live Demo
 
-**✨ [Découvrir le portfolio →](https://www.enezgubeljic.com/)**
+**✨ [Discover the portfolio →](https://www.enezgubeljic.com/)**
 
 ## 🛠️ Technologies
 
 - **Frontend:** Next.js 14, React, TypeScript, Tailwind CSS, Framer Motion
-- **Backend:** Symfony, PHP, Node.js, MySQL
-- **Design:** Figma, Photoshop, UI/UX
+- **Design:** Modern and responsive UI/UX
 
 ## 🚀 Installation
 
@@ -29,4 +28,4 @@ npm run dev
 
 ---
 
-> 💼 Ouvert aux opportunités en développement web moderne
+> 💼 Open to opportunities in modern web development
